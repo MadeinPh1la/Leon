@@ -9,53 +9,41 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @State private var revenue: String = ""
+    @State private var expenses: String = ""
+    @State private var netIncome: String = ""
+    @State private var result: String = ""
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        NavigationView {
+            Form {
+                Section(header: Text("Input Financial Data")) {
+                    TextField("Revenue", text: $revenue)
+                    TextField("Expenses", text: $expenses)
+                    TextField("Net Income", text: $netIncome)
+                }
+
+                Section {
+                    Button("Calculate Profit Margin") {
+                        calculateProfitMargin()
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+
+                Section(header: Text("Results")) {
+                    Text(result)
                 }
             }
-        } detail: {
-            Text("Select an item")
+            .navigationBarTitle("Financial Analysis")
         }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+    func calculateProfitMargin() {
+        // ... Calculation Logic ...
     }
 }
 
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
