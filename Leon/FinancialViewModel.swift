@@ -13,8 +13,8 @@ class FinancialViewModel: ObservableObject {
     @Published var economicData: EconomicIndicatorsResponse?
     @Published var error: String?
     @Published var errorMessage: String? // Used to display error messages in the UI
-    @Published var incomeStatements: [IncomeStatement]?
-    
+    @Published var incomeStatements: [IncomeStatement] = []
+
     
     func fetchIncomeStatements(forSymbol symbol: String) {
             API.shared.fetchIncomeStatements(forSymbol: symbol) { [weak self] result in
