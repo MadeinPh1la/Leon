@@ -7,100 +7,128 @@
 
 import Foundation
 
-// MARK: - Financial Statement Structure
-struct FinancialStatement {
-    var year: Int
-    var revenue: Double
-    var expenses: Double
-    var netIncome: Double
-    var operatingCashFlow: Double
-    var assets: Double
-    var liabilities: Double
-    var equity: Double
+
+struct IncomeStatementResponse: Decodable {
+    var symbol: String
+    var annualReports: [IncomeStatement]
+    var quarterlyReports: [IncomeStatement]
 }
 
-// MARK: - Financial Analysis Class
-class FinancialAnalysis {
-    var statements: [FinancialStatement]
-
-    init(statements: [FinancialStatement]) {
-        self.statements = statements
-    }
-
-    func calculateProfitMargins() -> [Int: Double] {
-        var margins = [Int: Double]()
-        for statement in statements {
-            let margin = statement.netIncome / statement.revenue
-            margins[statement.year] = margin
-        }
-        return margins
-    }
-
-    func calculateDebtToEquityRatio() -> [Int: Double] {
-        var ratios = [Int: Double]()
-        for statement in statements {
-            let ratio = statement.liabilities / statement.equity
-            ratios[statement.year] = ratio
-        }
-        return ratios
-    }
-    
-    // Additional methods for other financial metrics
+struct IncomeStatement: Decodable {
+    var fiscalDateEnding: String
+    var reportedCurrency: String
+    var grossProfit: String
+    var totalRevenue: String
+    var costOfRevenue: String
+    // ... other fields as needed ...
+    var netIncome: String
 }
 
-// MARK: - Financial Forecasting Class
-class FinancialForecasting {
-    var analysis: FinancialAnalysis
 
-    init(analysis: FinancialAnalysis) {
-        self.analysis = analysis
+// Struct for Balance Sheet
+struct BalanceSheet: Decodable {
+    var fiscalDateEnding: String
+    var totalAssets: String
+    var totalLiabilities: String
+    var totalEquity: String
+    // ... other fields as needed
+}
+
+// Struct for Cash Flow Statement
+struct CashFlowStatement: Decodable {
+    var fiscalDateEnding: String
+    var operatingCashflow: String
+    var capitalExpenditures: String
+    // ... other fields as needed
+}
+
+// Struct for Economic Indicator
+struct EconomicIndicator: Decodable {
+    var date: String
+    var value: String
+}
+
+// Struct to model the response for economic indicators
+struct EconomicIndicatorsResponse: Decodable {
+    var name: String
+    var interval: String
+    var unit: String
+    var data: [EconomicDataPoint]
+}
+
+struct EconomicDataPoint: Decodable {
+    var date: String
+    var value: String
+}
+
+// Main FinancialModel class
+class FinancialModel {
+    var incomeStatements: [IncomeStatement]?
+    var balanceSheets: [BalanceSheet]?
+    var cashFlowStatements: [CashFlowStatement]?
+    var economicIndicators: [EconomicIndicator]?
+
+    // Calculate Net Profit Margin
+    func calculateNetProfitMargin(forYear year: String) -> Double? {
+        guard let incomeStatement = incomeStatements?.first(where: { $0.fiscalDateEnding.starts(with: year) }) else {
+            return nil
+        }
+
+        if let netIncome = Double(incomeStatement.netIncome),
+           let totalRevenue = Double(incomeStatement.totalRevenue) {
+            return (netIncome / totalRevenue) * 100
+        } else {
+            return nil
+        }
     }
 
-    func forecastRevenue(growthRate: Double) -> [Int: Double] {
-        var forecastedRevenues = [Int: Double]()
-        if let lastStatement = analysis.statements.last {
-            var lastRevenue = lastStatement.revenue
-            for year in 1...5 { // Forecasting for the next 5 years
-                lastRevenue *= (1 + growthRate)
-                forecastedRevenues[lastStatement.year + year] = lastRevenue
+
+    // Calculate Current Ratio
+    func calculateCurrentRatio(forYear year: String) -> Double? {
+        guard let balanceSheet = balanceSheets?.first(where: { $0.fiscalDateEnding.starts(with: year) }),
+              let totalAssets = Double(balanceSheet.totalAssets),
+              let totalLiabilities = Double(balanceSheet.totalLiabilities) else {
+            return nil
+        }
+        return totalAssets / totalLiabilities
+    }
+
+
+    // Calculate Return on Equity (ROE)
+    func calculateReturnOnEquity(forYear year: String) -> Double? {
+        guard let incomeStatement = incomeStatements?.first(where: { $0.fiscalDateEnding.starts(with: year) }),
+              let balanceSheet = balanceSheets?.first(where: { $0.fiscalDateEnding.starts(with: year) }),
+              let netIncome = Double(incomeStatement.netIncome),
+              let totalEquity = Double(balanceSheet.totalEquity) else {
+            return nil
+        }
+        return (netIncome / totalEquity) * 100
+    }
+
+    // Calculate Debt-to-Equity Ratio
+    func calculateDebtToEquityRatio(forYear year: String) -> Double? {
+        guard let balanceSheet = balanceSheets?.first(where: { $0.fiscalDateEnding.starts(with: year) }),
+              let totalLiabilities = Double(balanceSheet.totalLiabilities),
+              let totalEquity = Double(balanceSheet.totalEquity) else {
+            return nil
+        }
+        return totalLiabilities / totalEquity
+    }
+
+    // Calculate Economic Growth Rate
+    func calculateEconomicGrowthRate() -> [Double] {
+        var growthRates = [Double]()
+        for i in 0..<(economicIndicators?.count ?? 1) - 1 {
+            if let currentYearValueString = economicIndicators?[i].value,
+               let previousYearValueString = economicIndicators?[i + 1].value,
+               let currentYearValue = Double(currentYearValueString),
+               let previousYearValue = Double(previousYearValueString) {
+                let growthRate = ((currentYearValue - previousYearValue) / previousYearValue) * 100
+                growthRates.append(growthRate)
             }
         }
-        return forecastedRevenues
+        return growthRates
     }
 
-    func forecastCashFlows(growthRate: Double) -> [Int: Double] {
-        var forecastedCashFlows = [Int: Double]()
-        if let lastStatement = analysis.statements.last {
-            var lastCashFlow = lastStatement.operatingCashFlow
-            for year in 1...5 {
-                lastCashFlow *= (1 + growthRate)
-                forecastedCashFlows[lastStatement.year + year] = lastCashFlow
-            }
-        }
-        return forecastedCashFlows
-    }
-
-    // Additional forecasting methods
-}
-
-// MARK: - Valuation Model Class
-class ValuationModel {
-    var forecasting: FinancialForecasting
-    var discountRate: Double
-
-    init(forecasting: FinancialForecasting, discountRate: Double) {
-        self.forecasting = forecasting
-        self.discountRate = discountRate
-    }
-
-    func calculateDCF() -> Double {
-        let cashFlows = forecasting.forecastCashFlows(growthRate: 0.05)
-        var dcfValue = 0.0
-        for (year, cashFlow) in cashFlows {
-            dcfValue += cashFlow / pow(1 + discountRate, Double(year))
-        }
-        return dcfValue
-    }
-
-    // Additional valuation methods
+    // ... Additional methods and calculations
 }
