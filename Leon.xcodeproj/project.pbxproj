@@ -18,6 +18,7 @@
 		0A54539B2B594D71000BB273 /* FinancialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54539A2B594D71000BB273 /* FinancialModel.swift */; };
 		0A54539D2B5A7EC2000BB273 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54539C2B5A7EC2000BB273 /* API.swift */; };
 		0A54539F2B5A80FB000BB273 /* FinancialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54539E2B5A80FB000BB273 /* FinancialViewModel.swift */; };
+		0AEBFDD62B7023DD0095660C /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBFDD52B7023DD0095660C /* MockURLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		0A54539A2B594D71000BB273 /* FinancialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialModel.swift; sourceTree = "<group>"; };
 		0A54539C2B5A7EC2000BB273 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0A54539E2B5A80FB000BB273 /* FinancialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialViewModel.swift; sourceTree = "<group>"; };
+		0AEBFDD52B7023DD0095660C /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				0A5453812B5937F7000BB273 /* LeonTests.swift */,
+				0AEBFDD52B7023DD0095660C /* MockURLSession.swift */,
 			);
 			path = LeonTests;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEBFDD62B7023DD0095660C /* MockURLSession.swift in Sources */,
 				0A5453822B5937F7000BB273 /* LeonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,9 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
+            
+            // Display search
+            
             VStack {
                 TextField("Enter Stock Symbol", text: $symbol)
                     .padding()
@@ -21,6 +24,8 @@ struct ContentView: View {
                     viewModel.fetchStockQuote(forSymbol: symbol.uppercased())
                 }
                 .padding()
+                
+                // Display stock quote information
 
                 if let stockQuote = viewModel.stockQuote {
                     VStack(alignment: .leading, spacing: 8) {
