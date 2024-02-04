@@ -9,72 +9,42 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @StateObject var viewModel = FinancialViewModel()
+    @State private var symbol: String = ""
+
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: FinancialView(viewModel: FinancialViewModel())) {
-                    Text("Show Financial Data")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                TextField("Enter Stock Symbol", text: $symbol)
+                    .padding()
+                Button("Get Quote") {
+                    viewModel.fetchStockQuote(forSymbol: symbol.uppercased())
+                }
+                .padding()
+
+                if let stockQuote = viewModel.stockQuote {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Symbol: \(stockQuote.symbol)")
+                        Text("Latest Price: \(stockQuote.price ?? "Data not available")")
+                        Text("Latest Trading Day: \(stockQuote.latestTradingDay ?? "Data not available")")
+                        Text("Open: \(stockQuote.open ?? "Data not available")")
+                        Text("High: \(stockQuote.high ?? "Data not available")")
+                        Text("Low: \(stockQuote.low ?? "Data not available")")
+                        Text("Volume: \(stockQuote.volume ?? "Data not available")")
+                        Text("Previous Close: \(stockQuote.previousClose ?? "Data not available")")
+                        Text("Today's Change: \(stockQuote.change ?? "Data not available")")
+                        Text("Today's Change %: \(stockQuote.changePercent ?? "Data not available")")
+                    }
+                    .padding()
+                    .background(Color.green.opacity(0.1))
+                    .cornerRadius(8)
+                } else if let errorMessage = viewModel.errorMessage {
+                    Text("Error: \(errorMessage)")
+                        .foregroundColor(.red)
                 }
             }
-            .navigationTitle("Main Menu")
+            .navigationTitle("Stock Quote")
+            .padding()
         }
-    }
-}
-
-struct FinancialView: View {
-    @ObservedObject var viewModel: FinancialViewModel
-
-    var body: some View {
-        List {
-            if let errorMessage = viewModel.errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-            }
-
-            Section(header: Text("Income Statements")) {
-                ForEach(viewModel.incomeStatements ?? [], id: \.fiscalDateEnding) { statement in
-                    IncomeStatementRow(statement: statement)
-                }
-
-            }
-        }
-        .navigationTitle("Financial Data")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    viewModel.fetchIncomeStatements(forSymbol: "IBM")
-                }) {
-                    Image(systemName: "arrow.clockwise")
-                }
-            }
-        }
-        .onAppear {
-            viewModel.fetchIncomeStatements(forSymbol: "IBM")
-        }
-    }
-}
-
-struct IncomeStatementRow: View {
-    var statement: IncomeStatement
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("Date: \(statement.fiscalDateEnding)")
-                .font(.headline)
-            Text("Net Income: \(statement.netIncome)")
-                .font(.subheadline)
-            // Add more fields as needed
-        }
-        .padding()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
