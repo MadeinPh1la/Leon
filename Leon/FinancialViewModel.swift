@@ -5,42 +5,83 @@
 //  Created by Kevin Downey on 1/19/24.
 //
 
+import FirebaseAuth
 import Foundation
 import Combine
 
-class FinancialViewModel: ObservableObject {
-    @Published var financialModel: FinancialModel?
-    @Published var economicData: EconomicIndicatorsResponse?
-    @Published var error: String?
-    @Published var errorMessage: String? // Used to display error messages in the UI
-    @Published var incomeStatements: [IncomeStatement] = []
-
+//User Authentication
+class AuthViewModel: ObservableObject {
+    @Published var isAuthenticated = false
+    @Published var isLoading = false  // Add this line to track loading state
     
-    func fetchIncomeStatements(forSymbol symbol: String) {
-            API.shared.fetchIncomeStatements(forSymbol: symbol) { [weak self] result in
+    init() {
+        // Check the authentication state at initialization
+        checkAuthState()
+    }
+    
+    func checkAuthState() {
+        // Update isAuthenticated based on Firebase Auth state
+        isAuthenticated = Auth.auth().currentUser != nil
+    }
+    
+    //Sign In
+    func signIn(email: String, password: String) {
+        isLoading = true  // Start loading
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            DispatchQueue.main.async {
+                self?.isLoading = false  // Stop loading
+                if let error = error {
+                    // Handle error
+                    return
+                }
+                self?.isAuthenticated = true
+            }
+        }
+    }
+    // Sign Out
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            isAuthenticated = false
+        } catch let signOutError as NSError {
+            print("Error signing out: \(signOutError.localizedDescription)")
+        }
+    }
+    // Sign Up
+    func signUp(email: String, password: String, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        // Implementation
+        isLoading = true  // Start loading
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+            DispatchQueue.main.async {
+                self?.isLoading = false  // Stop loading
+                if let error = error {
+                    // Handle error
+                    return
+                }
+                self?.isAuthenticated = true
+            }
+        }
+    }
+}
+    class FinancialViewModel: ObservableObject {
+        @Published var stockQuote: StockQuote?
+        @Published var errorMessage: String?
+        
+        //Fetch stock quotes
+        func fetchStockQuote(forSymbol symbol: String) {
+            
+            API.shared.fetchStockQuote(forSymbol: symbol) { [weak self] result in
                 DispatchQueue.main.async {
                     switch result {
-                    case .success(let incomeStatementResponse):
-                        self?.incomeStatements = incomeStatementResponse.annualReports
-                        self?.errorMessage = nil // Clear any previous error message
+                    case .success(let quote):
+                        print("Fetched quote: \(quote)")
+                        self?.stockQuote = quote
                     case .failure(let error):
-                        print("Error fetching income statements: \(error.localizedDescription)")
-                        self?.errorMessage = "Failed to fetch data: \(error.localizedDescription)"
-                        // Optionally, implement retry logic or other fallback here
+                        print("Error fetching stock quote: \(error.localizedDescription)")
+                        self?.errorMessage = "Error fetching data"
                     }
                 }
             }
         }
     }
-    // Fetch and store Income Statements
-//    func fetchIncomeStatements(completion: @escaping (Result<[IncomeStatement], Error>) -> Void) {
-//        API.shared.fetchIncomeStatements { result in
-//            switch result {
-//            case .success(let incomeStatements):
-//                self.financialModel?.incomeStatements = incomeStatements
-//                completion(.success(incomeStatements))
-//            case .failure(let error):
-//                completion(.failure(error))
-//            }
-//        }
-//    }
+
