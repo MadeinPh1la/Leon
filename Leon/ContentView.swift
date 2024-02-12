@@ -47,53 +47,23 @@ struct SignInView: View {
                 ProgressView()  // Show loading indicator
             } else {
                 Button("Sign In") {
-                    authViewModel.signIn(email: email, password: password)
+                    authViewModel.signIn(email: email, password: password) { success, error in
+                        DispatchQueue.main.async {
+                            if success {
+                                // Handle successful sign-in, e.g., updating UI or transitioning to another view
+                                print("Sign-in successful")
+                            } else {
+                                // Optionally handle the error, e.g., showing an error message
+                                // Make sure to declare a state variable in ContentView to hold the error message
+                                print("Sign-in failed: \(error?.localizedDescription ?? "Unknown error")")
+                            }
+                        }
+                    }
                 }
+
             }
         }
         .padding()
-    }
-}
-
-struct SignUpView: View {
-    @State private var email = ""
-    @State private var password = ""
-    @State private var errorMessage: String?
-
-    var body: some View {
-        VStack {
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
-                .keyboardType(.emailAddress)
-            
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            if let errorMessage = errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-            }
-            
-            Button("Sign Up") {
-                signUpUser()
-            }
-            .padding()
-        }
-        .padding()
-    }
-    
-    // Sign Up
-    
-    func signUpUser() {
-        // Assuming you have a viewModel or similar object handling authentication
-        AuthViewModel().signUp(email: email, password: password) { success, error in
-            if let error = error {
-                self.errorMessage = error.localizedDescription
-            } else if success {
-                // Handle successful sign-up, e.g., navigate to the main content of your app
-            }
-        }
     }
 }
 
