@@ -55,47 +55,6 @@ struct SignInView: View {
     }
 }
 
-struct SignUpView: View {
-    @State private var email = ""
-    @State private var password = ""
-    @State private var errorMessage: String?
-
-    var body: some View {
-        VStack {
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
-                .keyboardType(.emailAddress)
-            
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            if let errorMessage = errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-            }
-            
-            Button("Sign Up") {
-                signUpUser()
-            }
-            .padding()
-        }
-        .padding()
-    }
-    
-    // Sign Up
-    
-    func signUpUser() {
-        // Assuming you have a viewModel or similar object handling authentication
-        AuthViewModel().signUp(email: email, password: password) { success, error in
-            if let error = error {
-                self.errorMessage = error.localizedDescription
-            } else if success {
-                // Handle successful sign-up, e.g., navigate to the main content of your app
-            }
-        }
-    }
-}
 
 // Main Financial Model View
 struct MainAppView: View {
