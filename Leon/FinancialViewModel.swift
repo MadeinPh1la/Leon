@@ -9,79 +9,52 @@ import FirebaseAuth
 import Foundation
 import Combine
 
-//User Authentication
-class AuthViewModel: ObservableObject {
-    @Published var isAuthenticated = false
-    @Published var isLoading = false  // Add this line to track loading state
+// Financial Data Management
+class FinancialViewModel: ObservableObject {
+    private var financialDataService: FinancialDataService
+    @Published var companyOverview: CompanyOverview?
+    @Published var quote: StockQuote?
+    @Published var dcfResult: Double? 
+    @Published var stockQuoteState: DataState<StockQuote> = .idle
+    @Published var errorMessage: String?
+
     
-    init() {
-        // Check the authentication state at initialization
-        checkAuthState()
+    init(financialDataService: FinancialDataService = API.shared) {
+        self.financialDataService = financialDataService
     }
     
-    func checkAuthState() {
-        // Update isAuthenticated based on Firebase Auth state
-        isAuthenticated = Auth.auth().currentUser != nil
+    enum DataState<T> {
+        case idle
+        case loading
+        case loaded(T)
+        case error(String)
     }
     
-    //Sign In
-    func signIn(email: String, password: String) {
-        isLoading = true  // Start loading
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+    func fetchStockQuote(forSymbol symbol: String) {
+        print("Fetching stock quote for symbol: \(symbol)")
+        stockQuoteState = .loading
+        financialDataService.fetchStockQuote(forSymbol: symbol) { [weak self] result in
             DispatchQueue.main.async {
-                self?.isLoading = false  // Stop loading
-                if let error = error {
-                    // Handle error
-                    return
+                switch result {
+                case .success(let quote):
+                    self?.stockQuoteState = .loaded(quote)
+                case .failure(let error):
+                    self?.stockQuoteState = .error("Error fetching stock quote: \(error.localizedDescription)")
                 }
-                self?.isAuthenticated = true
             }
         }
     }
-    // Sign Out
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-            isAuthenticated = false
-        } catch let signOutError as NSError {
-            print("Error signing out: \(signOutError.localizedDescription)")
-        }
-    }
-    // Sign Up
-    func signUp(email: String, password: String, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-        // Implementation
-        isLoading = true  // Start loading
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
-            DispatchQueue.main.async {
-                self?.isLoading = false  // Stop loading
-                if let error = error {
-                    // Handle error
-                    return
-                }
-                self?.isAuthenticated = true
-            }
-        }
+    
+    func calculateDCF(from metrics: FinancialMetrics) -> Double {
+        guard let ebit = metrics.ebit,
+              let taxRate = metrics.taxRate,
+              let capEx = metrics.capEx,
+              let workingCapitalChange = metrics.workingCapitalChange,
+              let discountRate = metrics.discountRate,
+              let perpetualGrowthRate = metrics.perpetualGrowthRate else { return 0 }
+        
+        let fcff = ebit * (1 - taxRate) - capEx - workingCapitalChange
+        let dcfValue = fcff / (discountRate - perpetualGrowthRate)
+        return dcfValue
     }
 }
-    class FinancialViewModel: ObservableObject {
-        @Published var stockQuote: StockQuote?
-        @Published var errorMessage: String?
-        
-        //Fetch stock quotes
-        func fetchStockQuote(forSymbol symbol: String) {
-            
-            API.shared.fetchStockQuote(forSymbol: symbol) { [weak self] result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let quote):
-                        print("Fetched quote: \(quote)")
-                        self?.stockQuote = quote
-                    case .failure(let error):
-                        print("Error fetching stock quote: \(error.localizedDescription)")
-                        self?.errorMessage = "Error fetching data"
-                    }
-                }
-            }
-        }
-    }
-
