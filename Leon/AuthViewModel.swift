@@ -9,33 +9,42 @@ import Foundation
 import FirebaseAuth
 import Combine
 
-// User Authentication
+//User Authentication
 class AuthViewModel: ObservableObject {
     @Published var isAuthenticated = false
     @Published var isLoading = false
+    @Published var errorMessage: String?
     
     init() {
+        // Check the authentication state at initialization
         checkAuthState()
     }
     
     func checkAuthState() {
+
+        // Update isAuthenticated based on Firebase Auth state
         isAuthenticated = Auth.auth().currentUser != nil
     }
     
-    func signIn(email: String, password: String) {
-        isLoading = true
+    //Sign In
+    func signIn(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        isLoading = true  // Start loading
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             DispatchQueue.main.async {
-                self?.isLoading = false
+                self?.isLoading = false  // Stop loading
                 if let error = error {
-                    print("Sign in error: \(error.localizedDescription)")
+                    // If there's an error, call the completion handler with false and the error
+                    completion(false, error)
                     return
                 }
+                // On success, update isAuthenticated and call the completion handler with true and nil for the error
                 self?.isAuthenticated = true
+                completion(true, nil)
             }
         }
     }
-    
+
+    // Sign Out
     func signOut() {
         do {
             try Auth.auth().signOut()
@@ -44,19 +53,19 @@ class AuthViewModel: ObservableObject {
             print("Error signing out: \(signOutError.localizedDescription)")
         }
     }
-    
-    func signUp(email: String, password: String, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-        isLoading = true
+
+    // Sign Up
+    func signUp(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        // Implementation
+        isLoading = true  // Start loading
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
             DispatchQueue.main.async {
-                self?.isLoading = false
+                self?.isLoading = false  // Stop loading
                 if let error = error {
-                    print("Sign up error: \(error.localizedDescription)")
-                    completion(false, error)
+                    // Handle error
                     return
                 }
                 self?.isAuthenticated = true
-                completion(true, nil)
             }
         }
     }

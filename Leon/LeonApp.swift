@@ -37,13 +37,8 @@ struct LeonApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-            
-            // Provide AuthViewModel as an environment object
-                .environmentObject(authViewModel)
-
+            SignUpView() 
+                           .environmentObject(authViewModel)
         }
-        .modelContainer(sharedModelContainer)
-        
     }
 }

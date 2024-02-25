@@ -9,6 +9,7 @@ import FirebaseAuth
 import Foundation
 import Combine
 
+
 // Financial Data Management
 class FinancialViewModel: ObservableObject {
     private var financialDataService: FinancialDataService
@@ -52,6 +53,7 @@ class FinancialViewModel: ObservableObject {
               let workingCapitalChange = metrics.workingCapitalChange,
               let discountRate = metrics.discountRate,
               let perpetualGrowthRate = metrics.perpetualGrowthRate else { return 0 }
+
         
         let fcff = ebit * (1 - taxRate) - capEx - workingCapitalChange
         let dcfValue = fcff / (discountRate - perpetualGrowthRate)
