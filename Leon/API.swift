@@ -17,7 +17,7 @@ class API: FinancialDataService {
     
     
     static let shared = API()
-    private let apiKey = "EEU03VBW3KPPRD7O"
+    private let apiKey = "Your-API-Key"
         
         
         // Function to fetch stock quote data for a given symbol
