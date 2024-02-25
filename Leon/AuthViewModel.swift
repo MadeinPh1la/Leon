@@ -2,7 +2,7 @@
 //  AuthViewModel.swift
 //  Leon
 //
-//  Created by Kevin Downey on 2/12/24.
+//  Created by Kevin Downey on 2/18/24.
 //
 
 import Foundation
@@ -21,6 +21,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func checkAuthState() {
+
         // Update isAuthenticated based on Firebase Auth state
         isAuthenticated = Auth.auth().currentUser != nil
     }
@@ -52,6 +53,7 @@ class AuthViewModel: ObservableObject {
             print("Error signing out: \(signOutError.localizedDescription)")
         }
     }
+
     // Sign Up
     func signUp(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         // Implementation
