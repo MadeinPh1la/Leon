@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class API: FinancialDataService {
     let session: URLSessionProtocol
@@ -17,13 +18,6 @@ class API: FinancialDataService {
     
     static let shared = API()
     private let apiKey = "EEU03VBW3KPPRD7O"
-    
-    
-    // Get the Company Overview description
-    func fetchCompanyOverview(forSymbol symbol: String, completion: @escaping (Result<CompanyOverview, Error>) -> Void) {
-        let urlString = "https://api.example.com/overview?symbol=\(symbol)&apikey=\(apiKey)"
-        guard let url = URL(string: urlString) else { return }
-    }
         
         
         // Function to fetch stock quote data for a given symbol
@@ -58,65 +52,5 @@ class API: FinancialDataService {
                 }
             }.resume()
         }
-        
-        
-        
-        //Fetch Cash Flow Metrics
-        func fetchFinancialMetrics(forSymbol symbol: String, completion: @escaping (Result<FinancialMetrics, Error>) -> Void) {
-            
-            guard let url = URL(string: "https://www.alphavantage.co/query?function=Cash_Flow&symbol=\(symbol)&apikey=\(apiKey)") else {
-                completion(.failure(NSError(domain: "", code: 0, userInfo: nil)))
-                return
-            }
-            
-            let task = session.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let data = data else {
-                    completion(.failure(NSError(domain: "NoData", code: -1, userInfo: nil)))
-                    return
-                }
-                
-                do {
-                    let decodedMetrics = try JSONDecoder().decode(FinancialMetrics.self, from: data)
-                    completion(.success(decodedMetrics))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-            task.resume()
-        }
-        
-        // Fetch Company Overview Details
-        
-        func fetchCompanyOverview(symbol: String, completion: @escaping (Result<FinancialMetrics, Error>) -> Void) {
-            guard let url =  URL(string: "https://www.alphavantage.co/query?function=OVERVIEW&symbol=\(symbol)&apikey=\(apiKey)") else {
-                completion(.failure(NSError(domain: "", code: 0, userInfo: nil)))
-                return
-            }
-            
-            let task = session.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let data = data else {
-                    completion(.failure(NSError(domain: "NoData", code: -1, userInfo: nil)))
-                    return
-                }
-                
-                do {
-                    let decodedMetrics = try JSONDecoder().decode(FinancialMetrics.self, from: data)
-                    completion(.success(decodedMetrics))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-            task.resume()
-        }
-        
+
     }

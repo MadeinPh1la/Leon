@@ -105,45 +105,48 @@ struct MainAppView: View {
     @State private var symbol: String = ""
 
     
-        var body: some View {
-            NavigationView {
     
-                // Display search
     
-                VStack {
-                    TextField("Enter Stock Symbol", text: $symbol)
-                        .padding()
-                    Button("Get Quote") {
-                        viewModel.fetchStockQuote(forSymbol: symbol.uppercased())
+    var body: some View {
+        
+        NavigationView {
+            
+            // Display search
+            VStack {
+                TextField("Enter Stock Symbol", text: $symbol)
+                    .padding()
+                Button("Get Quote") {
+                    viewModel.fetchStockQuote(forSymbol: symbol.uppercased())
+                }
+                .padding()
+                
+                
+                ScrollView {
+                    VStack(spacing: 20) {
+                                        
+                        if let overview = viewModel.companyOverview {
+                            CompanyOverviewCard(overview: overview)
+                        }
+                        
+                        if let quote = viewModel.quote {
+                            QuoteCard(quote: quote) // Correctly passing unwrapped `quote`
+                        } else {
+                            // Handle the case where `quote` is nil
+                            Text("No quote available")
+                        }
+                        
+                        if let dcfValue = viewModel.dcfResult {
+                            let dcfData = DCFData(dcfValue: dcfValue) // Create an instance of DCFData
+                            DCFCard(dcfData: dcfData) // Pass the instance to DCFCard
+                        }
+                        
                     }
                     .padding()
-    
-                    // Display stock quote information
-    
-                    if let stockQuote = viewModel.quote {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Symbol: \(stockQuote.symbol)")
-                            Text("Latest Price: \(stockQuote.price ?? "Data not available")")
-                            Text("Latest Trading Day: \(stockQuote.latestTradingDay ?? "Data not available")")
-                            Text("Open: \(stockQuote.open ?? "Data not available")")
-                            Text("High: \(stockQuote.high ?? "Data not available")")
-                            Text("Low: \(stockQuote.low ?? "Data not available")")
-                            Text("Volume: \(stockQuote.volume ?? "Data not available")")
-                            Text("Previous Close: \(stockQuote.previousClose ?? "Data not available")")
-                            Text("Today's Change: \(stockQuote.change ?? "Data not available")")
-                            Text("Today's Change %: \(stockQuote.changePercent ?? "Data not available")")
-                        }
-                        .padding()
-                        .background(Color.green.opacity(0.1))
-                        .cornerRadius(8)
-                    } else if let errorMessage = viewModel.errorMessage {
-                        Text("Error: \(errorMessage)")
-                            .foregroundColor(.red)
-                    }
                 }
-                .navigationTitle("Stock Quote")
-                .padding()
             }
+        }
+    
+
             
         }
     
@@ -162,46 +165,4 @@ extension View {
         self.modifier(SafeAreaModifier(topInset: topInset))
     }
 }
-
-//    var body: some View {
-//        
-//        NavigationView {
-//            
-//            // Display search
-//            VStack {
-//                TextField("Enter Stock Symbol", text: $symbol)
-//                    .padding()
-//                Button("Get Quote") {
-//                    viewModel.fetchStockQuote(forSymbol: symbol.uppercased())
-//                }
-//                .padding()
-                
-                
-//                ScrollView {
-//                    VStack(spacing: 20) {
-//                        //                    searchField
-//                        
-//                        if let overview = viewModel.companyOverview {
-//                            CompanyOverviewCard(overview: overview)
-//                        }
-//                        
-//                        if let quote = viewModel.quote {
-//                            QuoteCard(quote: quote) // Correctly passing unwrapped `quote`
-//                        } else {
-//                            // Handle the case where `quote` is nil
-//                            Text("No quote available")
-//                        }
-//                        
-//                        if let dcfValue = viewModel.dcfResult {
-//                            let dcfData = DCFData(dcfValue: dcfValue) // Create an instance of DCFData
-//                            DCFCard(dcfData: dcfData) // Pass the instance to DCFCard
-//                        }
-//                        
-//                    }
-//                    .padding()
-//                }
-//            }
-//        }
-//    }
-//}
 
