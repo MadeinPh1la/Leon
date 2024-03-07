@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A4DCB4F2B94FF73002F23D8 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DCB4E2B94FF73002F23D8 /* URLSessionProtocol.swift */; };
+		0A4DCB552B95DF53002F23D8 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DCB542B95DF53002F23D8 /* MainAppView.swift */; };
+		0A4DCB592B96398F002F23D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DCB582B96398F002F23D8 /* AppDelegate.swift */; };
+		0A4DCB5B2B96811C002F23D8 /* DCFCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DCB5A2B96811C002F23D8 /* DCFCard.swift */; };
+		0A4DCB5D2B9A3260002F23D8 /* DCFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DCB5C2B9A3260002F23D8 /* DCFModel.swift */; };
 		0A54536D2B5937F4000BB273 /* LeonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54536C2B5937F4000BB273 /* LeonApp.swift */; };
 		0A54536F2B5937F4000BB273 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54536E2B5937F4000BB273 /* ContentView.swift */; };
 		0A5453712B5937F4000BB273 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5453702B5937F4000BB273 /* Item.swift */; };
@@ -26,7 +31,6 @@
 		0A71D41B2B8264B2004EBDA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A71D41A2B8264B2004EBDA9 /* GoogleService-Info.plist */; };
 		0A71D41D2B828470004EBDA9 /* CompanyOverviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D41C2B828470004EBDA9 /* CompanyOverviewCard.swift */; };
 		0A71D41F2B82850A004EBDA9 /* QuoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D41E2B82850A004EBDA9 /* QuoteCard.swift */; };
-		0A71D4212B828571004EBDA9 /* DCFCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4202B828571004EBDA9 /* DCFCard.swift */; };
 		0A71D4252B82A046004EBDA9 /* FinancialDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */; };
 		0A71D4272B82A0E9004EBDA9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4262B82A0E9004EBDA9 /* AuthViewModel.swift */; };
 		0A71D4292B82AF5F004EBDA9 /* DCFData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4282B82AF5F004EBDA9 /* DCFData.swift */; };
@@ -47,30 +51,14 @@
 			remoteGlobalIDString = 0A5453682B5937F4000BB273;
 			remoteInfo = Leon;
 		};
-		0A71D4402B8BC7F0004EBDA9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0A71D43A2B8BC7F0004EBDA9 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4BE730510F6EBDAEF7EF02CB99F4B209;
-			remoteInfo = Loaf;
-		};
-		0A71D4422B8BC7F0004EBDA9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0A71D43A2B8BC7F0004EBDA9 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8B8FAB0D627B17EDE1366984278705D9;
-			remoteInfo = MBProgressHUD;
-		};
-		0A71D4442B8BC7F0004EBDA9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0A71D43A2B8BC7F0004EBDA9 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5D39E7CBFAB16011E058AC42575FBDFF;
-			remoteInfo = "Pods-ios-dca-calculator";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A4DCB4E2B94FF73002F23D8 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		0A4DCB542B95DF53002F23D8 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
+		0A4DCB582B96398F002F23D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
+		0A4DCB5A2B96811C002F23D8 /* DCFCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCFCard.swift; sourceTree = "<group>"; };
+		0A4DCB5C2B9A3260002F23D8 /* DCFModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCFModel.swift; sourceTree = "<group>"; };
 		0A5453692B5937F4000BB273 /* Leon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A54536C2B5937F4000BB273 /* LeonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeonApp.swift; sourceTree = "<group>"; };
 		0A54536E2B5937F4000BB273 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,12 +78,9 @@
 		0A71D41A2B8264B2004EBDA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A71D41C2B828470004EBDA9 /* CompanyOverviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyOverviewCard.swift; sourceTree = "<group>"; };
 		0A71D41E2B82850A004EBDA9 /* QuoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCard.swift; sourceTree = "<group>"; };
-		0A71D4202B828571004EBDA9 /* DCFCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCFCard.swift; sourceTree = "<group>"; };
 		0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataService.swift; sourceTree = "<group>"; };
 		0A71D4262B82A0E9004EBDA9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		0A71D4282B82AF5F004EBDA9 /* DCFData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCFData.swift; sourceTree = "<group>"; };
-		0A71D4392B8BC7B5004EBDA9 /* Pods-ios-dca-calculator */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Pods-ios-dca-calculator"; path = "../../../ios-dca-calculator/Pods/Target Support Files/Pods-ios-dca-calculator"; sourceTree = "<group>"; };
-		0A71D43A2B8BC7F0004EBDA9 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = "../../../ios-dca-calculator/Pods/Pods.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,17 +137,21 @@
 		0A54536B2B5937F4000BB273 /* Leon */ = {
 			isa = PBXGroup;
 			children = (
+				0A4DCB582B96398F002F23D8 /* AppDelegate.swift */,
 				0A54539C2B5A7EC2000BB273 /* API.swift */,
+				0A4DCB4E2B94FF73002F23D8 /* URLSessionProtocol.swift */,
 				0A54539E2B5A80FB000BB273 /* FinancialViewModel.swift */,
 				0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */,
 				0A54536C2B5937F4000BB273 /* LeonApp.swift */,
 				0A54539A2B594D71000BB273 /* FinancialModel.swift */,
 				0A71D4262B82A0E9004EBDA9 /* AuthViewModel.swift */,
 				0A54536E2B5937F4000BB273 /* ContentView.swift */,
+				0A4DCB542B95DF53002F23D8 /* MainAppView.swift */,
 				0A71D4282B82AF5F004EBDA9 /* DCFData.swift */,
+				0A4DCB5C2B9A3260002F23D8 /* DCFModel.swift */,
 				0A71D41C2B828470004EBDA9 /* CompanyOverviewCard.swift */,
 				0A71D41E2B82850A004EBDA9 /* QuoteCard.swift */,
-				0A71D4202B828571004EBDA9 /* DCFCard.swift */,
+				0A4DCB5A2B96811C002F23D8 /* DCFCard.swift */,
 				0A5453702B5937F4000BB273 /* Item.swift */,
 				0A5453722B5937F7000BB273 /* Assets.xcassets */,
 				0A5453772B5937F7000BB273 /* Leon.entitlements */,
@@ -201,20 +190,8 @@
 		0A71D4382B8BC7B5004EBDA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A71D43A2B8BC7F0004EBDA9 /* Pods.xcodeproj */,
-				0A71D4392B8BC7B5004EBDA9 /* Pods-ios-dca-calculator */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		0A71D43B2B8BC7F0004EBDA9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0A71D4412B8BC7F0004EBDA9 /* Loaf.framework */,
-				0A71D4432B8BC7F0004EBDA9 /* MBProgressHUD.framework */,
-				0A71D4452B8BC7F0004EBDA9 /* Pods_ios_dca_calculator.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,12 +294,6 @@
 			);
 			productRefGroup = 0A54536A2B5937F4000BB273 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 0A71D43B2B8BC7F0004EBDA9 /* Products */;
-					ProjectRef = 0A71D43A2B8BC7F0004EBDA9 /* Pods.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				0A5453682B5937F4000BB273 /* Leon */,
@@ -331,33 +302,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		0A71D4412B8BC7F0004EBDA9 /* Loaf.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			name = Loaf;
-			path = Loaf.framework;
-			remoteRef = 0A71D4402B8BC7F0004EBDA9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0A71D4432B8BC7F0004EBDA9 /* MBProgressHUD.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			name = MBProgressHUD;
-			path = MBProgressHUD.framework;
-			remoteRef = 0A71D4422B8BC7F0004EBDA9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0A71D4452B8BC7F0004EBDA9 /* Pods_ios_dca_calculator.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			name = "Pods-ios-dca-calculator";
-			path = Pods_ios_dca_calculator.framework;
-			remoteRef = 0A71D4442B8BC7F0004EBDA9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0A5453672B5937F4000BB273 /* Resources */ = {
@@ -391,18 +335,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A4DCB4F2B94FF73002F23D8 /* URLSessionProtocol.swift in Sources */,
+				0A4DCB552B95DF53002F23D8 /* MainAppView.swift in Sources */,
 				0A54536F2B5937F4000BB273 /* ContentView.swift in Sources */,
 				0A54539B2B594D71000BB273 /* FinancialModel.swift in Sources */,
-				0A71D4212B828571004EBDA9 /* DCFCard.swift in Sources */,
 				0A71D4252B82A046004EBDA9 /* FinancialDataService.swift in Sources */,
 				0A71D41F2B82850A004EBDA9 /* QuoteCard.swift in Sources */,
 				0A54539F2B5A80FB000BB273 /* FinancialViewModel.swift in Sources */,
+				0A4DCB5D2B9A3260002F23D8 /* DCFModel.swift in Sources */,
+				0A4DCB592B96398F002F23D8 /* AppDelegate.swift in Sources */,
 				0A5453712B5937F4000BB273 /* Item.swift in Sources */,
 				0A71D4292B82AF5F004EBDA9 /* DCFData.swift in Sources */,
 				0A71D4272B82A0E9004EBDA9 /* AuthViewModel.swift in Sources */,
 				0A54536D2B5937F4000BB273 /* LeonApp.swift in Sources */,
 				0A71D41D2B828470004EBDA9 /* CompanyOverviewCard.swift in Sources */,
 				0A54539D2B5A7EC2000BB273 /* API.swift in Sources */,
+				0A4DCB5B2B96811C002F23D8 /* DCFCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

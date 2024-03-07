@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct QuoteCard: View {
+    
     var quote: StockQuote
 
     var body: some View {
+        print("Rendering QuoteCard")
+    return
         VStack(alignment: .leading, spacing: 8) {
             Text(quote.symbol)
                 .font(.headline)

@@ -13,14 +13,12 @@ import FirebaseCore
 
 struct LeonApp: App {
     
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     // Create an instance of AuthViewModel
     @StateObject var authViewModel = AuthViewModel()
 
-    // Initialize Firebase
-    init() {
-        FirebaseApp.configure()
-    }
-        
+   
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -38,7 +36,6 @@ struct LeonApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            
             // Provide AuthViewModel as an environment object
                 .environmentObject(authViewModel)
 

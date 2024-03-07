@@ -17,6 +17,7 @@ struct StockQuoteResponse: Decodable {
     }
 }
 
+// Stock quote data
 struct StockQuote: Decodable {
     let symbol: String
     let open: String?
@@ -28,7 +29,11 @@ struct StockQuote: Decodable {
     let previousClose: String?
     let change: String?
     let changePercent: String?
+    var priceDouble: Double? {
+        return Double(price ?? "")
+    }
     
+    // Parsing Alphavantage API json
     enum CodingKeys: String, CodingKey {
         case symbol = "01. symbol"
         case open = "02. open"
@@ -43,32 +48,6 @@ struct StockQuote: Decodable {
     }
 }
 
-protocol URLSessionProtocol {
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol
-}
-
-//Protocol for URLSessionDataTask's resume() method to mock test it.
-protocol URLSessionDataTaskProtocol {
-    func resume()
-}
-
-extension URLSession: URLSessionProtocol {
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-        return (dataTask(with: url, completionHandler: completionHandler) as URLSessionDataTask) as URLSessionDataTaskProtocol
-    }
-}
-
-extension URLSessionDataTask: URLSessionDataTaskProtocol {}
-
-struct FinancialMetrics: Decodable {
-    let ebit: Double?
-    let taxRate: Double?
-    let capEx: Double?
-    let workingCapitalChange: Double?
-    let discountRate: Double?
-    let perpetualGrowthRate: Double?
-
-}
 
 struct CompanyOverview: Codable {
     var symbol: String
@@ -78,11 +57,37 @@ struct CompanyOverview: Codable {
     // Parsing Alphavantage API json
     enum CodingKeys: String, CodingKey {
            case symbol = "Symbol"
-           case companyName = "CompanyName"
+           case companyName = "Name"
            case description = "Description"
        }
     }
 
+struct IncomeStatementResponse: Codable {
+    let annualReports: [AnnualReport]
+}
 
+struct AnnualReport: Codable {
+    let fiscalDateEnding: String
+    let reportedCurrency: String
+    let grossProfit: String
+    let totalRevenue: String
+    let ebit: String
+    let incomeTaxExpense: String // Needed for tax rate calculation
+    let preTaxIncome: String // Needed for tax rate calculation
+}
 
+struct IncomeStatement: Codable {
+    let ebit: Double
+    let taxRate: Double
+}
+
+struct CashFlowResponse: Codable {
+    let annualReports: [CashFlowReport]
+}
+
+struct CashFlowReport: Codable {
+    let fiscalDateEnding: String
+    let reportedCurrency: String
+    let capitalExpenditures: String
+}
 

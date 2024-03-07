@@ -9,17 +9,20 @@ import SwiftUI
 import SwiftData
 import FirebaseAuth
 
+
 // If user is authenticated, display main financial view. If user is not authenticated, display sign in view.
 struct ContentView: View {
-    
+    @State private var symbol: String = ""
     @EnvironmentObject var authViewModel: AuthViewModel
-    @StateObject var financialViewModel = FinancialViewModel()
+  //  @StateObject var financialViewModel = FinancialViewModel()
+    @ObservedObject var financialViewModel = FinancialViewModel()
+
 
     var body: some View {
            Group {
                if authViewModel.isAuthenticated {
                    // User is authenticated, show the main app content
-                   MainAppView(viewModel: financialViewModel)
+                   MainAppView(financialViewModel: financialViewModel)
                } else {
                    // User is not authenticated, show sign-in or sign-up options
                    SignInView()
@@ -61,7 +64,7 @@ struct SignUpView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var errorMessage: String?
-
+    
     var body: some View {
         VStack {
             TextField("Email", text: $email)
@@ -99,58 +102,8 @@ struct SignUpView: View {
     }
 }
 
-// Main Financial Model View
-struct MainAppView: View {
-    @ObservedObject var viewModel: FinancialViewModel
-    @State private var symbol: String = ""
 
     
-    
-    
-    var body: some View {
-        
-        NavigationView {
-            
-            // Display search
-            VStack {
-                TextField("Enter Stock Symbol", text: $symbol)
-                    .padding()
-                Button("Get Quote") {
-                    viewModel.fetchStockQuote(forSymbol: symbol.uppercased())
-                }
-                .padding()
-                
-                
-                ScrollView {
-                    VStack(spacing: 20) {
-                                        
-                        if let overview = viewModel.companyOverview {
-                            CompanyOverviewCard(overview: overview)
-                        }
-                        
-                        if let quote = viewModel.quote {
-                            QuoteCard(quote: quote) // Correctly passing unwrapped `quote`
-                        } else {
-                            // Handle the case where `quote` is nil
-                            Text("No quote available")
-                        }
-                        
-                        if let dcfValue = viewModel.dcfResult {
-                            let dcfData = DCFData(dcfValue: dcfValue) // Create an instance of DCFData
-                            DCFCard(dcfData: dcfData) // Pass the instance to DCFCard
-                        }
-                        
-                    }
-                    .padding()
-                }
-            }
-        }
-    
-
-            
-        }
-    
-    }
 struct SafeAreaModifier: ViewModifier {
     var topInset: CGFloat
 
