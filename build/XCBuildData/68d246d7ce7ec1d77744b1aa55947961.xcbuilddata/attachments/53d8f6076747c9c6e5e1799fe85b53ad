@@ -1,0 +1,4 @@
+module GTMSessionFetcherFull {
+umbrella "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/gtm-session-fetcher/Sources/Full/Public"
+export *
+}

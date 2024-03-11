@@ -1,0 +1,4 @@
+module FirebaseABTesting {
+umbrella header "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/FirebaseABTesting/Sources/Public/FirebaseABTesting/FirebaseABTesting.h"
+export *
+}

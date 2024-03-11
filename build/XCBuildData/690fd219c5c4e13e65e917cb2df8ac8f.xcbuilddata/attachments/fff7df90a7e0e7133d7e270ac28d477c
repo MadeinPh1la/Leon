@@ -1,0 +1,178 @@
+{
+  "" : {
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Leon-master.dia",
+    "emit-module-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Leon-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Leon-master-emit-module.dia",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Leon-master.swiftdeps"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/AppDelegate.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AppDelegate.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AppDelegate.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AppDelegate.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AppDelegate.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AppDelegate.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AppDelegate.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AppDelegate.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AppDelegate~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/API.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/API.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/API.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/API.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/API.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/API.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/API.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/API.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/API~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/AuthViewModel.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AuthViewModel.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AuthViewModel.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AuthViewModel.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AuthViewModel.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AuthViewModel.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AuthViewModel.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AuthViewModel.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/AuthViewModel~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/CompanyOverviewCard.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/CompanyOverviewCard.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/CompanyOverviewCard.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/CompanyOverviewCard.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/CompanyOverviewCard.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/CompanyOverviewCard.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/CompanyOverviewCard.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/CompanyOverviewCard.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/CompanyOverviewCard~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/ContentView.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/DCFCard.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFCard.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFCard.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFCard.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFCard.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFCard.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFCard.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFCard.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFCard~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/DCFData.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFData.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFData.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFData.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFData.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFData.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFData.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFData.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFData~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/DCFModel.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFModel.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFModel.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFModel.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFModel.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFModel.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFModel.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFModel.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/DCFModel~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/FinancialDataService.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialDataService.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialDataService.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialDataService.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialDataService.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialDataService.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialDataService.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialDataService.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialDataService~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/FinancialModel.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialModel.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialModel.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialModel.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialModel.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialModel.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialModel.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialModel.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialModel~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/FinancialViewModel.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialViewModel.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialViewModel.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialViewModel.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialViewModel.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialViewModel.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialViewModel.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialViewModel.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/FinancialViewModel~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/Item.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Item.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Item.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Item.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Item.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Item.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Item.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Item.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/Item~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/LeonApp.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/LeonApp.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/LeonApp.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/LeonApp.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/LeonApp.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/LeonApp.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/LeonApp.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/LeonApp.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/LeonApp~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/MainAppView.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/QuoteCard.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/QuoteCard.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/QuoteCard.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/QuoteCard.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/QuoteCard.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/QuoteCard.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/QuoteCard.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/QuoteCard.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/QuoteCard~partial.swiftmodule"
+  },
+  "/Users/kevin/Downloads/iOS/apps/Leon/Leon/URLSessionProtocol.swift" : {
+    "const-values" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.d",
+    "diagnostics" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.dia",
+    "index-unit-output-path" : "/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.o",
+    "llvm-bc" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.bc",
+    "object" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.o",
+    "swift-dependencies" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol~partial.swiftmodule"
+  }
+}

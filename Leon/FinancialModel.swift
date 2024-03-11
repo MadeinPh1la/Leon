@@ -62,11 +62,9 @@ struct CompanyOverview: Codable {
        }
     }
 
-struct IncomeStatementResponse: Codable {
-    let annualReports: [AnnualReport]
-}
-
 struct AnnualReport: Codable {
+    let operatingCashFlow: String
+    let capitalExpenditures: String
     let fiscalDateEnding: String
     let reportedCurrency: String
     let grossProfit: String
@@ -81,13 +79,81 @@ struct IncomeStatement: Codable {
     let taxRate: Double
 }
 
-struct CashFlowResponse: Codable {
-    let annualReports: [CashFlowReport]
-}
-
 struct CashFlowReport: Codable {
     let fiscalDateEnding: String
     let reportedCurrency: String
     let capitalExpenditures: String
+}
+
+struct CashFlowStatement: Decodable {
+    let annualReports: [AnnualReport]
+}
+
+struct CashFlowData: Decodable {
+    let freeCashFlow: Double?
+}
+
+struct CashFlowResponse: Decodable {
+    var symbol: String
+    var annualReports: [AnnualCashFlowReport]
+}
+
+struct AnnualCashFlowReport: Decodable {
+    var fiscalDateEnding: String
+    var reportedCurrency: String
+    var operatingCashflow: String
+    var capitalExpenditures: String
+    var netIncome: String
+
+    // Computed property to calculate free cash flow
+    var freeCashFlow: Double {
+        if let operatingCashFlowDouble = Double(operatingCashflow),
+           let capitalExpendituresDouble = Double(capitalExpenditures) {
+            return operatingCashFlowDouble - capitalExpendituresDouble
+        }
+        return 0.0  // Or handle this scenario as appropriate
+    }
+}
+
+struct IncomeStatementResponse: Decodable {
+    let symbol: String
+    let annualReports: [AnnualIncomeStatementReport]
+}
+
+struct BalanceSheetResponse: Codable {
+    let symbol: String
+    let annualReports: [AnnualBalanceSheetReport]
+}
+
+struct AnnualBalanceSheetReport: Codable {
+    let fiscalDateEnding: String
+    let reportedCurrency: String
+    let totalAssets: String
+    let totalCurrentAssets: String
+    let cashAndCashEquivalentsAtCarryingValue: String
+    let totalLiabilities: String
+    let totalCurrentLiabilities: String
+    let longTermDebt: String
+}
+
+struct AnnualIncomeStatementReport: Codable {
+    let fiscalDateEnding: String
+    let reportedCurrency: String
+    let grossProfit: String
+    let totalRevenue: String
+    let operatingIncome: String
+    let netIncome: String
+    let ebit: String
+}
+
+struct IncomeStatementData: Codable {
+    let symbol: String
+    let annualReports: [AnnualIncomeStatementReport]
+}
+
+
+struct BalanceSheetData: Codable {
+    let symbol: String
+    let annualReports: [AnnualBalanceSheetReport]
 }
 

@@ -13,25 +13,13 @@ import FirebaseCore
 
 struct LeonApp: App {
     
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+    init() {
+            FirebaseApp.configure()
+        }
+
     // Create an instance of AuthViewModel
     @StateObject var authViewModel = AuthViewModel()
 
-   
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-            
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
 
     var body: some Scene {
         WindowGroup {
@@ -40,7 +28,5 @@ struct LeonApp: App {
                 .environmentObject(authViewModel)
 
         }
-        .modelContainer(sharedModelContainer)
-        
     }
 }

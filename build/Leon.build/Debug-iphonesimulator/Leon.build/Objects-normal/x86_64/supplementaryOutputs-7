@@ -1,0 +1,18 @@
+"/Users/kevin/Downloads/iOS/apps/Leon/Leon/ContentView.swift":
+  swift-dependencies: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.swiftdeps"
+  diagnostics: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.dia"
+  const-values: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.swiftconstvalues"
+  object: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.o"
+  dependencies: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/ContentView.d"
+"/Users/kevin/Downloads/iOS/apps/Leon/Leon/URLSessionProtocol.swift":
+  object: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.o"
+  const-values: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.swiftconstvalues"
+  swift-dependencies: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.swiftdeps"
+  diagnostics: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.dia"
+  dependencies: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/URLSessionProtocol.d"
+"/Users/kevin/Downloads/iOS/apps/Leon/Leon/MainAppView.swift":
+  const-values: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.swiftconstvalues"
+  object: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.o"
+  swift-dependencies: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.swiftdeps"
+  dependencies: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.d"
+  diagnostics: "/Users/kevin/Downloads/iOS/apps/Leon/build/Leon.build/Debug-iphonesimulator/Leon.build/Objects-normal/x86_64/MainAppView.dia"

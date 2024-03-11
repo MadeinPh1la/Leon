@@ -13,6 +13,9 @@ import Combine
 class AuthViewModel: ObservableObject {
     @Published var isAuthenticated = false
     @Published var isLoading = false
+    @Published var errorMessage: String?
+
+
     
     init() {
         checkAuthState()
@@ -28,7 +31,9 @@ class AuthViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self?.isLoading = false
                 if let error = error {
-                    print("Sign in error: \(error.localizedDescription)")
+                    // Log the full error
+                    print("Sign in error: \(error)")
+                    self?.errorMessage = error.localizedDescription
                     return
                 }
                 self?.isAuthenticated = true
