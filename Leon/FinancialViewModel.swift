@@ -68,11 +68,12 @@ class FinancialViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    // Load the fetched DCF Value
+    // Load the fetched DCF Value and update share price 
     func loadDCFValue(forSymbol symbol: String) {
         print("loadDCFValue func triggered for symbol: \(symbol)")
         stockQuoteState = .loading
         
+        // Chain publishers for fetching Cash Flow, Income Statement, and Balance Sheet data
         let cashFlowPublisher = api.fetchCashFlowData(forSymbol: symbol).print("CashFlow")
         let incomeStatementPublisher = api.fetchIncomeStatement(forSymbol: symbol).print("IncomeStatement")
         let balanceSheetPublisher = api.fetchBalanceSheet(forSymbol: symbol).print("BalanceSheet")
@@ -121,8 +122,26 @@ class FinancialViewModel: ObservableObject {
                 
                 print("Calculated DCF Value: \(calculatedDCFValue)")
                 self.dcfValue = calculatedDCFValue
-                self.triggerUpdate.toggle()
+                
+                // After successfully calculating the DCF value, call updateSharePrice to calculate and update the share price
+                self.updateSharePrice()
             })
             .store(in: &cancellables)
+    }
+    
+    func updateSharePrice() {
+        // Set DCF Value
+        guard let dcfValue = dcfValue,
+              // Parse sharesOutstanding and convert to Double
+              let sharesOutstandingStr = companyOverview?.sharesOutstanding,
+              let sharesOutstanding = Double(sharesOutstandingStr),
+              sharesOutstanding > 0 else {
+            print("Error: DCF value not calculated or invalid shares outstanding.")
+            return
+        }
+        
+        let dcfSharePrice = dcfValue / sharesOutstanding
+        print("Corrected DCF Share Price: \(dcfSharePrice)")
+        self.sharePrice = dcfSharePrice
     }
 }

@@ -58,15 +58,13 @@ private extension MainAppView {
                     CompanyOverviewCard(overview: overview)
                 }
                 
-                // Display DCF Value
-                if let dcfValue = financialViewModel.dcfValue {
-                    Text("DCF Value: \(dcfValue, specifier: "%.2f")")
-                        }
-                    else {
-                        Text("DCF Data not available")
-                        
-                            .padding()
-                    }
+                // Displaying the DCF Share Price
+                if let sharePrice = financialViewModel.sharePrice {
+                    Text("DCF Share Price: \(sharePrice, specifier: "%.2f")")
+                } else {
+                    Text("DCF Share Price: Calculating...")
+                }
+            
                 }
             }
         }

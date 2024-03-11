@@ -51,16 +51,22 @@ struct StockQuote: Decodable {
 
 struct CompanyOverview: Codable {
     var symbol: String
-    var companyName: String
+    var name: String
     var description: String
+    var marketCapitalization: String?
+    var sharesOutstanding: String? 
+
+
     
-    // Parsing Alphavantage API json
+    // Parsing AlphaVantage API json
     enum CodingKeys: String, CodingKey {
-           case symbol = "Symbol"
-           case companyName = "Name"
-           case description = "Description"
-       }
+        case symbol = "Symbol"
+        case name = "Name"
+        case description = "Description"
+        case marketCapitalization = "MarketCapitalization"
+        case sharesOutstanding = "SharesOutstanding"
     }
+}
 
 struct AnnualReport: Codable {
     let operatingCashFlow: String

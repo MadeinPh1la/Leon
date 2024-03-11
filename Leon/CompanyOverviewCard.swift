@@ -12,7 +12,7 @@ struct CompanyOverviewCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(overview.companyName)
+            Text(overview.name)
                 .font(.headline)
             Text(overview.description)
                 .font(.body)
