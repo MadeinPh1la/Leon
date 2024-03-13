@@ -1,28 +1,22 @@
 //
-//  SwiftUIView.swift
+//  DCFCard.swift
 //  Leon
 //
-//  Created by Kevin Downey on 2/18/24.
+//  Created by Kevin Downey on 3/4/24.
 //
 
 import SwiftUI
 
 struct DCFCard: View {
+    @ObservedObject var viewModel: FinancialViewModel  // Ensure this is passed to the view
+
     var dcfData: DCFData
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("DCF Value: \(dcfData.dcfValue, specifier: "%.2f")")
-                .font(.title)
-                .fontWeight(.bold)
+        VStack {
+            Text("DCF Value: \(viewModel.dcfValue ?? 0.0, specifier: "%.2f")")
+            // Debug DCF value display
+//             Text("Debug DCF Value: \(dcfData.dcfValue ?? 0.0, specifier: "%.2f")")
         }
-        .padding()
-        .background(RoundedRectangle(cornerRadius: 10).fill(Color.green.opacity(0.1)))
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.green, lineWidth: 2)
-        )
-        .padding()
     }
 }
-

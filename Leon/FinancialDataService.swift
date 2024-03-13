@@ -20,7 +20,8 @@ struct SearchResult: Codable {
 // Define the protocol as before, but without default implementations.
 protocol FinancialDataService {
     func fetchStockQuote(forSymbol symbol: String, completion: @escaping (Result<StockQuote, Error>) -> Void)
-//    func fetchCompanyOverview(forSymbol symbol: String, completion: @escaping (Result<CompanyOverview, Error>) -> Void)
-//    func fetchSymbolsPublisher(keyword: String) -> AnyPublisher<SearchResults, Error>
+    func fetchCompanyOverview(forSymbol symbol: String, completion: @escaping (Result<CompanyOverview, Error>) -> Void)
+    func fetchDCFData(forSymbol symbol: String, completion: @escaping (Result<DCFData, Error>) -> Void)
+
 }
 

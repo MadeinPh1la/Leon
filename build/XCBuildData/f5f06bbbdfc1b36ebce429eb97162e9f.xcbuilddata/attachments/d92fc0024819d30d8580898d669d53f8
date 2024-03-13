@@ -1,0 +1,18 @@
+{
+  "" : {
+    "diagnostics" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift-master.dia",
+    "emit-module-dependencies" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift-master-emit-module.dia",
+    "swift-dependencies" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift-master.swiftdeps"
+  },
+  "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/FirebaseRemoteConfigSwift/Sources/FirebaseRemoteConfigSwift.swift" : {
+    "const-values" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift.d",
+    "diagnostics" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift.dia",
+    "index-unit-output-path" : "/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift.o",
+    "llvm-bc" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift.bc",
+    "object" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift.o",
+    "swift-dependencies" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/build/Firebase.build/Debug-iphonesimulator/FirebaseRemoteConfigSwift.build/Objects-normal/x86_64/FirebaseRemoteConfigSwift~partial.swiftmodule"
+  }
+}

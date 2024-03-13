@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A4DCB4F2B94FF73002F23D8 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DCB4E2B94FF73002F23D8 /* URLSessionProtocol.swift */; };
+		0A4DCB552B95DF53002F23D8 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DCB542B95DF53002F23D8 /* MainAppView.swift */; };
+		0A4DCB5B2B96811C002F23D8 /* DCFCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DCB5A2B96811C002F23D8 /* DCFCard.swift */; };
+		0A4DCB5D2B9A3260002F23D8 /* DCFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4DCB5C2B9A3260002F23D8 /* DCFModel.swift */; };
 		0A54536D2B5937F4000BB273 /* LeonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54536C2B5937F4000BB273 /* LeonApp.swift */; };
 		0A54536F2B5937F4000BB273 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54536E2B5937F4000BB273 /* ContentView.swift */; };
 		0A5453712B5937F4000BB273 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5453702B5937F4000BB273 /* Item.swift */; };
@@ -18,15 +22,11 @@
 		0A54539B2B594D71000BB273 /* FinancialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54539A2B594D71000BB273 /* FinancialModel.swift */; };
 		0A54539D2B5A7EC2000BB273 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54539C2B5A7EC2000BB273 /* API.swift */; };
 		0A54539F2B5A80FB000BB273 /* FinancialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A54539E2B5A80FB000BB273 /* FinancialViewModel.swift */; };
-		0A71D4112B826438004EBDA9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0A71D4102B826438004EBDA9 /* FirebaseAnalytics */; };
-		0A71D4132B826438004EBDA9 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 0A71D4122B826438004EBDA9 /* FirebaseAnalyticsOnDeviceConversion */; };
-		0A71D4152B826438004EBDA9 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A71D4142B826438004EBDA9 /* FirebaseAnalyticsSwift */; };
-		0A71D4172B826438004EBDA9 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 0A71D4162B826438004EBDA9 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		0A71D4112B826438004EBDA9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0A71D4102B826438004EBDA9 /* FirebaseAnalytics */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0A71D4192B826438004EBDA9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0A71D4182B826438004EBDA9 /* FirebaseAuth */; };
 		0A71D41B2B8264B2004EBDA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A71D41A2B8264B2004EBDA9 /* GoogleService-Info.plist */; };
 		0A71D41D2B828470004EBDA9 /* CompanyOverviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D41C2B828470004EBDA9 /* CompanyOverviewCard.swift */; };
 		0A71D41F2B82850A004EBDA9 /* QuoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D41E2B82850A004EBDA9 /* QuoteCard.swift */; };
-		0A71D4212B828571004EBDA9 /* DCFCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4202B828571004EBDA9 /* DCFCard.swift */; };
 		0A71D4252B82A046004EBDA9 /* FinancialDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */; };
 		0A71D4272B82A0E9004EBDA9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4262B82A0E9004EBDA9 /* AuthViewModel.swift */; };
 		0A71D4292B82AF5F004EBDA9 /* DCFData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4282B82AF5F004EBDA9 /* DCFData.swift */; };
@@ -51,6 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A4DCB4E2B94FF73002F23D8 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		0A4DCB542B95DF53002F23D8 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
+		0A4DCB5A2B96811C002F23D8 /* DCFCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCFCard.swift; sourceTree = "<group>"; };
+		0A4DCB5C2B9A3260002F23D8 /* DCFModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCFModel.swift; sourceTree = "<group>"; };
 		0A5453692B5937F4000BB273 /* Leon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A54536C2B5937F4000BB273 /* LeonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeonApp.swift; sourceTree = "<group>"; };
 		0A54536E2B5937F4000BB273 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,10 +71,13 @@
 		0A54539A2B594D71000BB273 /* FinancialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialModel.swift; sourceTree = "<group>"; };
 		0A54539C2B5A7EC2000BB273 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0A54539E2B5A80FB000BB273 /* FinancialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialViewModel.swift; sourceTree = "<group>"; };
-		0A71D4072B79973A004EBDA9 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		0A71D4092B7997D5004EBDA9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		0A71D40B2B799C07004EBDA9 /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
-		0A71D40D2B79A54B004EBDA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+
+		0A71D41A2B8264B2004EBDA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0A71D41C2B828470004EBDA9 /* CompanyOverviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyOverviewCard.swift; sourceTree = "<group>"; };
+		0A71D41E2B82850A004EBDA9 /* QuoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCard.swift; sourceTree = "<group>"; };
+		0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataService.swift; sourceTree = "<group>"; };
+		0A71D4262B82A0E9004EBDA9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		0A71D4282B82AF5F004EBDA9 /* DCFData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCFData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A71D3F22B799688004EBDA9 /* FirebaseAnalytics in Frameworks */,
-				0A71D3FE2B799688004EBDA9 /* FirebaseAuth in Frameworks */,
+				0A71D4192B826438004EBDA9 /* FirebaseAuth in Frameworks */,
+				0A71D4112B826438004EBDA9 /* FirebaseAnalytics in Frameworks */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +115,7 @@
 				0A5453802B5937F7000BB273 /* LeonTests */,
 				0A54538A2B5937F7000BB273 /* LeonUITests */,
 				0A54536A2B5937F4000BB273 /* Products */,
+				0A71D4382B8BC7B5004EBDA9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				0A54539C2B5A7EC2000BB273 /* API.swift */,
+				0A4DCB4E2B94FF73002F23D8 /* URLSessionProtocol.swift */,
 				0A54539E2B5A80FB000BB273 /* FinancialViewModel.swift */,
 				0A71D4072B79973A004EBDA9 /* SignUpView.swift */,
 				0A54536C2B5937F4000BB273 /* LeonApp.swift */,
@@ -131,10 +141,12 @@
 				0A54539A2B594D71000BB273 /* FinancialModel.swift */,
 				0A71D4262B82A0E9004EBDA9 /* AuthViewModel.swift */,
 				0A54536E2B5937F4000BB273 /* ContentView.swift */,
+				0A4DCB542B95DF53002F23D8 /* MainAppView.swift */,
 				0A71D4282B82AF5F004EBDA9 /* DCFData.swift */,
+				0A4DCB5C2B9A3260002F23D8 /* DCFModel.swift */,
 				0A71D41C2B828470004EBDA9 /* CompanyOverviewCard.swift */,
 				0A71D41E2B82850A004EBDA9 /* QuoteCard.swift */,
-				0A71D4202B828571004EBDA9 /* DCFCard.swift */,
+				0A4DCB5A2B96811C002F23D8 /* DCFCard.swift */,
 				0A5453702B5937F4000BB273 /* Item.swift */,
 				0A5453722B5937F7000BB273 /* Assets.xcassets */,
 				0A5453772B5937F7000BB273 /* Leon.entitlements */,
@@ -173,6 +185,13 @@
 			path = LeonUITests;
 			sourceTree = "<group>";
 		};
+		0A71D4382B8BC7B5004EBDA9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,8 +209,9 @@
 			);
 			name = Leon;
 			packageProductDependencies = (
-				0A71D3F12B799688004EBDA9 /* FirebaseAnalytics */,
-				0A71D3FD2B799688004EBDA9 /* FirebaseAuth */,
+				0A71D4102B826438004EBDA9 /* FirebaseAnalytics */,
+				0A71D4182B826438004EBDA9 /* FirebaseAuth */,
+
 			);
 			productName = Leon;
 			productReference = 0A5453692B5937F4000BB273 /* Leon.app */;
@@ -314,20 +334,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A4DCB4F2B94FF73002F23D8 /* URLSessionProtocol.swift in Sources */,
+				0A4DCB552B95DF53002F23D8 /* MainAppView.swift in Sources */,
 				0A54536F2B5937F4000BB273 /* ContentView.swift in Sources */,
 				0A54539B2B594D71000BB273 /* FinancialModel.swift in Sources */,
-				0A71D4212B828571004EBDA9 /* DCFCard.swift in Sources */,
 				0A71D4252B82A046004EBDA9 /* FinancialDataService.swift in Sources */,
 				0A71D41F2B82850A004EBDA9 /* QuoteCard.swift in Sources */,
 				0A54539F2B5A80FB000BB273 /* FinancialViewModel.swift in Sources */,
-				0A71D4082B79973A004EBDA9 /* SignUpView.swift in Sources */,
-				0A71D40A2B7997D5004EBDA9 /* AuthViewModel.swift in Sources */,
+				0A4DCB5D2B9A3260002F23D8 /* DCFModel.swift in Sources */,
+
 				0A5453712B5937F4000BB273 /* Item.swift in Sources */,
 				0A71D4292B82AF5F004EBDA9 /* DCFData.swift in Sources */,
 				0A71D4272B82A0E9004EBDA9 /* AuthViewModel.swift in Sources */,
 				0A54536D2B5937F4000BB273 /* LeonApp.swift in Sources */,
 				0A71D41D2B828470004EBDA9 /* CompanyOverviewCard.swift in Sources */,
 				0A54539D2B5A7EC2000BB273 /* API.swift in Sources */,
+				0A4DCB5B2B96811C002F23D8 /* DCFCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,7 +705,8 @@ isa = XCRemoteSwiftPackageReference;
 			package = 0A71D3F02B799688004EBDA9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
-		0A71D3FD2B799688004EBDA9 /* FirebaseAuth */ = {
+		0A71D4182B826438004EBDA9 /* FirebaseAuth */ = {
+
 			isa = XCSwiftPackageProductDependency;
 			package = 0A71D3F02B799688004EBDA9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;

@@ -9,130 +9,131 @@ import SwiftUI
 import SwiftData
 import FirebaseAuth
 
+
 // If user is authenticated, display main financial view. If user is not authenticated, display sign in view.
 struct ContentView: View {
-    
+    @State private var symbol: String = ""
     @EnvironmentObject var authViewModel: AuthViewModel
-    @StateObject var financialViewModel = FinancialViewModel()
-
+    //  @StateObject var financialViewModel = FinancialViewModel()
+    @ObservedObject var financialViewModel = FinancialViewModel()
+    
+    
     var body: some View {
-           Group {
-               if authViewModel.isAuthenticated {
-                   // User is authenticated, show the main app content
-                   MainAppView(viewModel: financialViewModel)
-               } else {
-                   // User is not authenticated, show sign-in or sign-up options
-                   SignInView()
-               }
-           }
-       }
-   }
+        Group {
+            if authViewModel.isAuthenticated {
+                // User is authenticated, show the main app content
+                MainAppView(financialViewModel: financialViewModel)
+            } else {
+                // User is not authenticated, show sign-in or sign-up options
+                SignInView()
+            }
+        }
+        .id(authViewModel.isAuthenticated) // This forces SwiftUI to redraw the view when isAuthenticated changes
+    }
+}
 
 // Sign In View
 struct SignInView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
+    @State private var showSignUp = false
     @State private var email = ""
     @State private var password = ""
 
     var body: some View {
         VStack {
+               if showSignUp {
+                   // Sign Up Form
+                   TextField("Email", text: $email)
+                       .autocapitalization(.none)
+                       .textFieldStyle(RoundedBorderTextFieldStyle())
+                       .disabled(authViewModel.isLoading)  // Disable input while loading
+                   
+                   SecureField("Password", text: $password)
+                       .textFieldStyle(RoundedBorderTextFieldStyle())
+                       .disabled(authViewModel.isLoading)  // Disable input while loading
+                   
+                   if authViewModel.isLoading {
+                       ProgressView()
+                   } else {
+                       Button("Sign Up") {
+                           // Call sign-up method
+                           authViewModel.signUp(email: email, password: password) { success, error in
+                               if success {
+                                   print("Success! \(success)")
+
+                               } else if let error = error {
+                                   print("Sign up error: \(error.localizedDescription)")
+                                   return
+                               }
+                           }
+                       }
+                   }
+               } else {
+                   // Sign In Form
+                   TextField("Email", text: $email)
+                       .autocapitalization(.none)
+                       .textFieldStyle(RoundedBorderTextFieldStyle())
+                       .disabled(authViewModel.isLoading)  // Disable input while loading
+                   SecureField("Password", text: $password)
+                       .textFieldStyle(RoundedBorderTextFieldStyle())
+                       .disabled(authViewModel.isLoading)  // Disable input while loading
+                   
+                   if authViewModel.isLoading {
+                       ProgressView()
+                   } else {
+                       Button("Sign In") {
+                           authViewModel.signIn(email: email, password: password)
+                       }
+                   }
+               }
+               
+               // Toggle Button
+               Button(showSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up") {
+                   showSignUp.toggle()
+               }
+           }
+           .padding()
+       }
+
+}
+
+struct SignUpView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @State private var email = ""
+    @State private var password = ""
+    @State private var errorMessage: String?
+    
+    var body: some View {
+        VStack {
             TextField("Email", text: $email)
-                .autocapitalization(.none)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .disabled(authViewModel.isLoading)  // Disable input while loading
+                .autocapitalization(.none)
+                .keyboardType(.emailAddress)
             
             SecureField("Password", text: $password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .disabled(authViewModel.isLoading)  // Disable input while loading
             
-            if authViewModel.isLoading {
-                ProgressView()  // Show loading indicator
-            } else {
-                Button("Sign In") {
-                    authViewModel.signIn(email: email, password: password) { success, error in
-                        DispatchQueue.main.async {
-                            if success {
-                                // Handle successful sign-in, e.g., updating UI or transitioning to another view
-                                print("Sign-in successful")
-                            } else {
-                                // Optionally handle the error, e.g., showing an error message
-                                // Make sure to declare a state variable in ContentView to hold the error message
-                                print("Sign-in failed: \(error?.localizedDescription ?? "Unknown error")")
-                            }
-                        }
-                    }
-                }
-
+            if let errorMessage = errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
             }
         }
         .padding()
     }
-}
+    
+    // Sign Up
+    
+    func signUpUser() {
+        AuthViewModel().signUp(email: email, password: password) { success, error in
+            if let error = error {
+                self.errorMessage = error.localizedDescription
+            } else if success {
+                self.authViewModel.isAuthenticated = true
 
-// Main Financial Model View
-struct MainAppView: View {
-    @ObservedObject var viewModel: FinancialViewModel
-    @State private var symbol: String = ""
-
-    
-    
-    
-    var body: some View {
-        
-        NavigationView {
-            
-            // Display search
-            VStack {
-                TextField("Enter Stock Symbol", text: $symbol)
-                    .padding()
-                Button("Get Quote") {
-                    viewModel.fetchStockQuote(forSymbol: symbol.uppercased())
-                }
-                .padding()
-                
-                
-                ScrollView {
-                    VStack(spacing: 20) {
-                                        
-                        if let overview = viewModel.companyOverview {
-                            CompanyOverviewCard(overview: overview)
-                        }
-                        
-                        if let quote = viewModel.quote {
-                            QuoteCard(quote: quote) // Correctly passing unwrapped `quote`
-                        } else {
-                            // Handle the case where `quote` is nil
-                            Text("No quote available")
-                        }
-                        
-                        if let dcfValue = viewModel.dcfResult {
-                            let dcfData = DCFData(dcfValue: dcfValue) // Create an instance of DCFData
-                            DCFCard(dcfData: dcfData) // Pass the instance to DCFCard
-                        }
-                        
-                    }
-                    .padding()
-                }
             }
         }
-    
-
-            
-        }
-    
-    }
-struct SafeAreaModifier: ViewModifier {
-    var topInset: CGFloat
-
-    func body(content: Content) -> some View {
-        content
-            .padding(.top, topInset.isNaN ? 0 : topInset) // Check for NaN
     }
 }
 
-extension View {
-    func safeAreaPadding(topInset: CGFloat) -> some View {
-        self.modifier(SafeAreaModifier(topInset: topInset))
-    }
-}
+
 

@@ -1,0 +1,4 @@
+module FirebaseInAppMessagingTarget {
+umbrella "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/firebase-ios-sdk/SwiftPM-PlatformExclude/FirebaseInAppMessagingWrap/include"
+export *
+}

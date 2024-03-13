@@ -1,0 +1,28 @@
+{
+  "" : {
+    "diagnostics" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/GoogleUtilitiesPrivacy-master.dia",
+    "emit-module-dependencies" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/GoogleUtilitiesPrivacy-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/GoogleUtilitiesPrivacy-master-emit-module.dia",
+    "swift-dependencies" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/GoogleUtilitiesPrivacy-master.swiftdeps"
+  },
+  "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/DerivedSources/resource_bundle_accessor.swift" : {
+    "const-values" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/resource_bundle_accessor.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/resource_bundle_accessor.d",
+    "diagnostics" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/resource_bundle_accessor.dia",
+    "index-unit-output-path" : "/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/resource_bundle_accessor.o",
+    "llvm-bc" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/resource_bundle_accessor.bc",
+    "object" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/resource_bundle_accessor.o",
+    "swift-dependencies" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/resource_bundle_accessor.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/resource_bundle_accessor~partial.swiftmodule"
+  },
+  "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/GoogleUtilities/Privacy/Empty.swift" : {
+    "const-values" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/Empty.swiftconstvalues",
+    "dependencies" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/Empty.d",
+    "diagnostics" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/Empty.dia",
+    "index-unit-output-path" : "/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/Empty.o",
+    "llvm-bc" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/Empty.bc",
+    "object" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/Empty.o",
+    "swift-dependencies" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/Empty.swiftdeps",
+    "swiftmodule" : "/Users/kevin/Library/Developer/Xcode/DerivedData/Leon-fbbaalauanokiaejqhlknauyuwti/SourcePackages/checkouts/GoogleUtilities/build/GoogleUtilities.build/Debug-iphonesimulator/GoogleUtilitiesPrivacy.build/Objects-normal/x86_64/Empty~partial.swiftmodule"
+  }
+}

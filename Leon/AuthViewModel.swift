@@ -33,8 +33,10 @@ class AuthViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self?.isLoading = false  // Stop loading
                 if let error = error {
-                    // If there's an error, call the completion handler with false and the error
-                    completion(false, error)
+                    // Log the full error
+                    print("Sign in error: \(error)")
+                    self?.errorMessage = error.localizedDescription
+
                     return
                 }
                 // On success, update isAuthenticated and call the completion handler with true and nil for the error
