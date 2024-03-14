@@ -14,7 +14,6 @@ import FirebaseAuth
 struct ContentView: View {
     @State private var symbol: String = ""
     @EnvironmentObject var authViewModel: AuthViewModel
-    //  @StateObject var financialViewModel = FinancialViewModel()
     @ObservedObject var financialViewModel = FinancialViewModel()
     
     
@@ -94,26 +93,6 @@ struct SignInView: View {
            }
            .padding()
        }
-//        VStack {
-//            TextField("Email", text: $email)
-////                .autocapitalization(.none)
-////                .textFieldStyle(RoundedBorderTextFieldStyle())
-//                .disabled(authViewModel.isLoading)  // Disable input while loading
-//            
-//            SecureField("Password", text: $password)
-////                .textFieldStyle(RoundedBorderTextFieldStyle())
-//                .disabled(authViewModel.isLoading)  // Disable input while loading
-//            
-//            if authViewModel.isLoading {
-//                ProgressView()  // Show loading indicator
-//            } else {
-//                Button("Sign In") {
-//                    authViewModel.signIn(email: email, password: password)
-//                }
-//            }
-//        }
-//        .padding()
-//    }
 }
 
 struct SignUpView: View {

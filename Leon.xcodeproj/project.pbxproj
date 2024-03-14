@@ -32,6 +32,12 @@
 		0A805D222BA273BC00FA9ED0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D212BA273BC00FA9ED0 /* NetworkService.swift */; };
 		0A805D242BA2747700FA9ED0 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D232BA2747700FA9ED0 /* MockNetworkService.swift */; };
 		0A805D262BA27FCB00FA9ED0 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D252BA27FCA00FA9ED0 /* MockURLSession.swift */; };
+		0A805D292BA294E200FA9ED0 /* MockAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D282BA294E200FA9ED0 /* MockAuth.swift */; };
+		0A805D2D2BA2966200FA9ED0 /* Authenticatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D2C2BA2966200FA9ED0 /* Authenticatable.swift */; };
+		0A805D2F2BA2975400FA9ED0 /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D2E2BA2975400FA9ED0 /* AuthViewModelTests.swift */; };
+		0A805D312BA298BB00FA9ED0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0A805D302BA298BB00FA9ED0 /* FirebaseAuth */; };
+		0A805D332BA298C900FA9ED0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0A805D322BA298C900FA9ED0 /* FirebaseAuth */; };
+		0A805D392BA29DE000FA9ED0 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D382BA29DE000FA9ED0 /* FirebaseAuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +87,11 @@
 		0A805D212BA273BC00FA9ED0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		0A805D232BA2747700FA9ED0 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		0A805D252BA27FCA00FA9ED0 /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		0A805D272BA289B600FA9ED0 /* LeonTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = LeonTests.xctestplan; sourceTree = "<group>"; };
+		0A805D282BA294E200FA9ED0 /* MockAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuth.swift; sourceTree = "<group>"; };
+		0A805D2C2BA2966200FA9ED0 /* Authenticatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticatable.swift; sourceTree = "<group>"; };
+		0A805D2E2BA2975400FA9ED0 /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
+		0A805D382BA29DE000FA9ED0 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A805D312BA298BB00FA9ED0 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A805D332BA298C900FA9ED0 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +125,7 @@
 		0A5453602B5937F4000BB273 = {
 			isa = PBXGroup;
 			children = (
+				0A805D272BA289B600FA9ED0 /* LeonTests.xctestplan */,
 				0A54536B2B5937F4000BB273 /* Leon */,
 				0A5453802B5937F7000BB273 /* LeonTests */,
 				0A54538A2B5937F7000BB273 /* LeonUITests */,
@@ -140,6 +154,8 @@
 				0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */,
 				0A54536C2B5937F4000BB273 /* LeonApp.swift */,
 				0A54539A2B594D71000BB273 /* FinancialModel.swift */,
+				0A805D382BA29DE000FA9ED0 /* FirebaseAuthService.swift */,
+				0A805D2C2BA2966200FA9ED0 /* Authenticatable.swift */,
 				0A71D4262B82A0E9004EBDA9 /* AuthViewModel.swift */,
 				0A54536E2B5937F4000BB273 /* ContentView.swift */,
 				0A4DCB542B95DF53002F23D8 /* MainAppView.swift */,
@@ -172,6 +188,8 @@
 				0A5453812B5937F7000BB273 /* LeonTests.swift */,
 				0A805D252BA27FCA00FA9ED0 /* MockURLSession.swift */,
 				0A805D232BA2747700FA9ED0 /* MockNetworkService.swift */,
+				0A805D282BA294E200FA9ED0 /* MockAuth.swift */,
+				0A805D2E2BA2975400FA9ED0 /* AuthViewModelTests.swift */,
 			);
 			path = LeonTests;
 			sourceTree = "<group>";
@@ -229,6 +247,9 @@
 				0A54537F2B5937F7000BB273 /* PBXTargetDependency */,
 			);
 			name = LeonTests;
+			packageProductDependencies = (
+				0A805D302BA298BB00FA9ED0 /* FirebaseAuth */,
+			);
 			productName = LeonTests;
 			productReference = 0A54537D2B5937F7000BB273 /* LeonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -247,6 +268,9 @@
 				0A5453892B5937F7000BB273 /* PBXTargetDependency */,
 			);
 			name = LeonUITests;
+			packageProductDependencies = (
+				0A805D322BA298C900FA9ED0 /* FirebaseAuth */,
+			);
 			productName = LeonUITests;
 			productReference = 0A5453872B5937F7000BB273 /* LeonUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -333,6 +357,7 @@
 				0A4DCB552B95DF53002F23D8 /* MainAppView.swift in Sources */,
 				0A54536F2B5937F4000BB273 /* ContentView.swift in Sources */,
 				0A54539B2B594D71000BB273 /* FinancialModel.swift in Sources */,
+				0A805D392BA29DE000FA9ED0 /* FirebaseAuthService.swift in Sources */,
 				0A71D4252B82A046004EBDA9 /* FinancialDataService.swift in Sources */,
 				0A71D41F2B82850A004EBDA9 /* QuoteCard.swift in Sources */,
 				0A54539F2B5A80FB000BB273 /* FinancialViewModel.swift in Sources */,
@@ -344,6 +369,7 @@
 				0A54536D2B5937F4000BB273 /* LeonApp.swift in Sources */,
 				0A71D41D2B828470004EBDA9 /* CompanyOverviewCard.swift in Sources */,
 				0A54539D2B5A7EC2000BB273 /* API.swift in Sources */,
+				0A805D2D2BA2966200FA9ED0 /* Authenticatable.swift in Sources */,
 				0A4DCB5B2B96811C002F23D8 /* DCFCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,7 +379,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A805D262BA27FCB00FA9ED0 /* MockURLSession.swift in Sources */,
+				0A805D292BA294E200FA9ED0 /* MockAuth.swift in Sources */,
 				0A805D242BA2747700FA9ED0 /* MockNetworkService.swift in Sources */,
+				0A805D2F2BA2975400FA9ED0 /* AuthViewModelTests.swift in Sources */,
 				0A5453822B5937F7000BB273 /* LeonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -696,6 +724,16 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		0A805D1D2BA13BBA00FA9ED0 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A805D1C2BA13BBA00FA9ED0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0A805D302BA298BB00FA9ED0 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A805D1C2BA13BBA00FA9ED0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0A805D322BA298C900FA9ED0 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0A805D1C2BA13BBA00FA9ED0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;

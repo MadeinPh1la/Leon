@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 import Combine
 
 // User Authentication
@@ -15,53 +14,58 @@ class AuthViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String?
 
+    private var authService: Authenticatable
 
-    
-    init() {
+    // Use dependency injection to allow for testing with mock authentication services
+    init(authService: Authenticatable = FirebaseAuthService()) {
+        self.authService = authService
         checkAuthState()
     }
     
-    func checkAuthState() {
-        isAuthenticated = Auth.auth().currentUser != nil
+    func checkAuthState() { 
+        isAuthenticated = authService.isUserAuthenticated
     }
     
     func signIn(email: String, password: String) {
         isLoading = true
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+        authService.signIn(withEmail: email, password: password) { [weak self] success, error in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 if let error = error {
                     // Log the full error
                     print("Sign in error: \(error)")
                     self?.errorMessage = error.localizedDescription
-                    return
+                } else if success {
+                    self?.isAuthenticated = true
+                } else {
+                    self?.errorMessage = "An unknown error occurred"
                 }
-                self?.isAuthenticated = true
             }
         }
     }
     
     func signOut() {
         do {
-            try Auth.auth().signOut()
+            try authService.signOut()
             isAuthenticated = false
         } catch let signOutError as NSError {
             print("Error signing out: \(signOutError.localizedDescription)")
+            errorMessage = signOutError.localizedDescription
         }
     }
     
     func signUp(email: String, password: String, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         isLoading = true
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+        authService.createUser(withEmail: email, password: password) { [weak self] success, error in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 if let error = error {
                     print("Sign up error: \(error.localizedDescription)")
                     completion(false, error)
-                    return
+                } else {
+                    self?.isAuthenticated = success
+                    completion(success, nil)
                 }
-                self?.isAuthenticated = true
-                completion(true, nil)
             }
         }
     }

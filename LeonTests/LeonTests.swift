@@ -145,7 +145,8 @@ class APITests: XCTestCase {
                     "totalRevenue": "274515000000",
                     "grossProfit": "104956000000",
                     "operatingIncome": "66288000000",
-                    "netIncome": "57411000000"
+                    "netIncome": "57411000000",
+                    "ebit": "55000000000"
                 }
             ]
         }

@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "79C996E9-E6AF-4201-A511-ED53AD6B4D20",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Leon.xcodeproj",
+      "identifier" : "0A5453682B5937F4000BB273",
+      "name" : "Leon"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Leon.xcodeproj",
+        "identifier" : "0A54537C2B5937F7000BB273",
+        "name" : "LeonTests"
+      }
+    }
+  ],
+  "version" : 1
+}
