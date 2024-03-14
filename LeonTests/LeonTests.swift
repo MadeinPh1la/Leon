@@ -28,6 +28,8 @@ class APITests: XCTestCase {
             super.tearDown()
         }
     
+    // Test fetching Stock Quote data
+    
     func testFetchStockQuoteSuccess() {
         let jsonString = """
         {
