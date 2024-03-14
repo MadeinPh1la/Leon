@@ -38,14 +38,16 @@ class FinancialViewModel: ObservableObject {
         api.fetchStockQuote(forSymbol: symbol)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
-                if case .failure(let error) = completion {
+                switch completion {
+                case .failure(let error):
                     self?.errorMessage = "Failed to fetch quote: \(error.localizedDescription)"
                     self?.stockQuoteState = .error(error.localizedDescription)
                     print("Error fetching stock quote: \(error.localizedDescription)")
+                case .finished:
+                    self?.stockQuoteState = .loaded
                 }
-                self?.stockQuoteState = .loaded
-            }, receiveValue: { [weak self] quote in
-                self?.quote = quote
+            }, receiveValue: { [weak self] response in
+                self?.quote = response.globalQuote // Adjusted to use the property from response
                 print("Stock quote fetched successfully.")
             })
             .store(in: &cancellables)

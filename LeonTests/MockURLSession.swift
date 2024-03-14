@@ -5,23 +5,23 @@
 //  Created by Kevin Downey on 2/4/24.
 //
 
-import XCTest
-@testable import Leon
-
-
-class MockURLSessionDataTask: URLSessionDataTaskProtocol {
-    func resume() {
-        // Implementation for mock, can be empty or notify a closure when it's called
-    }
-}
+import Combine
+import Foundation
+@testable import Leon  // Replace 'Leon' with your actual module name if different
 
 class MockURLSession: URLSessionProtocol {
-    var nextDataTask = MockURLSessionDataTask()
-    var nextData: Data?
-    var nextError: Error?
-
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-        completionHandler(nextData, nil, nextError)
-        return nextDataTask
+    var data: Data?
+    var response: URLResponse?
+    var error: Error?
+    
+    func fetchData<T: Decodable>(from url: URL, responseType: T.Type) -> AnyPublisher<T, Error> {
+        if let error = self.error {
+            return Fail(error: error).eraseToAnyPublisher()
+        }
+        let decoder = JSONDecoder()
+        return Just(data ?? Data())
+            .decode(type: responseType, decoder: decoder)
+            .mapError { $0 as Error }
+            .eraseToAnyPublisher()
     }
 }

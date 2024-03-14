@@ -6,96 +6,171 @@
 //
 
 import XCTest
+import Combine
 @testable import Leon
 
-// MARK: - StockQuote Test
-
-// Test StockQuote struct correctly decodes from a JSON response. This verifies the FinancialViewModel decoding logic aligns with the API's response format.
-
-
-class StockQuoteTests: XCTestCase {
-    
-    func testStockQuoteDecoding() {
-        let json = """
-        {
-            "01. symbol": "AAPL",
-            "02. open": "150.00",
-            "03. high": "155.00",
-            "04. low": "149.00",
-            "05. price": "154.00",
-            "06. volume": "123456",
-            "07. latest trading day": "2024-02-02",
-            "08. previous close": "150.00",
-            "09. change": "4.00",
-            "10. change percent": "2.67%"
-        }
-        """.data(using: .utf8)!
-        
-        let decoder = JSONDecoder()
-        let stockQuote = try? decoder.decode(StockQuote.self, from: json)
-        
-        XCTAssertNotNil(stockQuote, "Decoding StockQuote should not fail.")
-        XCTAssertEqual(stockQuote?.symbol, "AAPL", "Symbol should be AAPL.")
-    }
-}
-
-// MARK: - API Test
-
-//Verifies the API call for fetching a stock quote correctly handles a successful response. It uses a mock URLSession to avoid making a real network request.
-
 class APITests: XCTestCase {
+    private var cancellables: Set<AnyCancellable>!
+    private var api: API!
+    private var mockNetworkService: MockNetworkService!
+
+    override func setUp() {
+           super.setUp()
+           cancellables = Set<AnyCancellable>()
+           mockNetworkService = MockNetworkService()
+           api = API(networkService: mockNetworkService)
+       }
+    
+    override func tearDown() {
+            cancellables = nil
+            mockNetworkService = nil
+            api = nil
+            super.tearDown()
+        }
+    
     func testFetchStockQuoteSuccess() {
-        // Setup mock URLSession and API instance
-        let api = API() // Adjust this to use your API class
-        let expectation = XCTestExpectation(description: "Fetch stock quote succeeds")
-        
-        api.fetchStockQuote(forSymbol: "AAPL") { result in
-            switch result {
-            case .success(let stockQuote):
-                XCTAssertEqual(stockQuote.symbol, "AAPL", "Fetched stock symbol should be AAPL.")
-                expectation.fulfill()
-            case .failure:
-                XCTFail("API call for fetching stock quote failed.")
+        let jsonString = """
+        {
+            "Global Quote": {
+                "01. symbol": "AAPL",
+                "05. price": "154.00"
             }
         }
+        """
+        mockNetworkService.mockResponse = jsonString.data(using: .utf8)
+
+        let expectation = XCTestExpectation(description: "fetchStockQuote completes")
         
-        wait(for: [expectation], timeout: 5.0)
+        api.fetchStockQuote(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    XCTFail("Request failed with error: \(error)")
+                }
+                expectation.fulfill()
+            }, receiveValue: { stockQuoteResponse in
+                XCTAssertEqual(stockQuoteResponse.globalQuote.symbol, "AAPL")
+                XCTAssertEqual(stockQuoteResponse.globalQuote.price, "154.00")
+            })
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+
+    // Test fetching data for Company Overview
+    
+    func testFetchCompanyOverviewSuccess() {
+        let jsonString = """
+        {
+            "Symbol": "AAPL",
+            "Name": "Apple Inc.",
+            "Description": "Apple Inc. designs, manufactures, and markets mobile communication and media devices."
+        }
+        """
+        mockNetworkService.mockResponse = jsonString.data(using: .utf8)
+        
+        let expectation = XCTestExpectation(description: "fetchCompanyOverview completes")
+        
+        api.fetchCompanyOverview(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    XCTFail("Request failed with error: \(error)")
+                }
+                expectation.fulfill()
+            }, receiveValue: { overview in
+                XCTAssertEqual(overview.symbol, "AAPL")
+                XCTAssertEqual(overview.name, "Apple Inc.")
+            })
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.0)
     }
     
-}
-
-
-// MARK: - User Interaction Test
-
-// System test to simulate a user entering a stock symbol and pressing a fetch button. Test then verifies that the expected stock quote details are displayed.
-
-
-class StockQuoteAppUITests: XCTestCase {
-    override func setUpWithError() throws {
-        continueAfterFailure = false
+    // Test fetching Cash Flow data
+    
+    func testFetchCashFlowDataSuccess() {
+        let jsonString = """
+        {
+            "symbol": "AAPL",
+            "annualReports": [
+                {
+                    "fiscalDateEnding": "2020-09-30",
+                    "reportedCurrency": "USD",
+                    "operatingCashflow": "100000000",
+                    "capitalExpenditures": "-50000000",
+                    "netIncome": "40000000"
+                }
+            ]
+        }
+        """
+        mockNetworkService.mockResponse = jsonString.data(using: .utf8)
+        
+        let expectation = XCTestExpectation(description: "fetchCashFlowData completes")
+        
+        api.fetchCashFlowData(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    XCTFail("Request failed with error: \(error)")
+                }
+                expectation.fulfill()
+            }, receiveValue: { cashFlowResponse in
+                XCTAssertNotNil(cashFlowResponse.annualReports.first)
+                XCTAssertEqual(cashFlowResponse.symbol, "AAPL")
+            })
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    // Test fetching Income Statement data
+    
+    func testFetchIncomeStatementSuccess() {
+        let jsonString = """
+        {
+            "symbol": "AAPL",
+            "annualReports": [
+                {
+                    "fiscalDateEnding": "2020-09-30",
+                    "reportedCurrency": "USD",
+                    "totalRevenue": "274515000000",
+                    "grossProfit": "104956000000",
+                    "operatingIncome": "66288000000",
+                    "netIncome": "57411000000"
+                }
+            ]
+        }
+        """
+        mockNetworkService.mockResponse = jsonString.data(using: .utf8)
+        
+        let expectation = XCTestExpectation(description: "fetchIncomeStatement completes")
+        
+        api.fetchIncomeStatement(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    XCTFail("Request failed with error: \(error)")
+                }
+                expectation.fulfill()
+            }, receiveValue: { incomeStatementData in
+                XCTAssertNotNil(incomeStatementData.annualReports.first)
+                XCTAssertEqual(incomeStatementData.symbol, "AAPL")
+                XCTAssertEqual(incomeStatementData.annualReports.first?.netIncome, "57411000000")
+            })
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.0)
     }
 
-    func testFetchingStockQuoteDisplaysDetails() {
-        let app = XCUIApplication()
-        app.launch()
-        
-        let symbolTextField = app.textFields["Enter Stock Symbol"]
-        XCTAssertTrue(symbolTextField.exists)
-        symbolTextField.tap()
-        symbolTextField.typeText("AAPL")
-        
-        let fetchButton = app.buttons["Fetch"]
-        XCTAssertTrue(fetchButton.exists)
-        fetchButton.tap()
-        
-        // Assuming there's a label that displays the stock symbol in your UI
-        let stockSymbolLabel = app.staticTexts["SymbolLabel"] // Use the actual accessibility identifier
-        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: stockSymbolLabel, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
-        
-        XCTAssertEqual(stockSymbolLabel.label, "AAPL", "Displayed stock symbol should be AAPL.")
-    }
+
 }
-
-
 
