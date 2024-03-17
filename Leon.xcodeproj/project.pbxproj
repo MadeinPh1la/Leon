@@ -29,8 +29,6 @@
 		0A71D4272B82A0E9004EBDA9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4262B82A0E9004EBDA9 /* AuthViewModel.swift */; };
 		0A71D4292B82AF5F004EBDA9 /* DCFData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4282B82AF5F004EBDA9 /* DCFData.swift */; };
 		0A805D1E2BA13BBA00FA9ED0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0A805D1D2BA13BBA00FA9ED0 /* FirebaseAuth */; };
-		0A805D222BA273BC00FA9ED0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D212BA273BC00FA9ED0 /* NetworkService.swift */; };
-		0A805D242BA2747700FA9ED0 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D232BA2747700FA9ED0 /* MockNetworkService.swift */; };
 		0A805D262BA27FCB00FA9ED0 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D252BA27FCA00FA9ED0 /* MockURLSession.swift */; };
 		0A805D292BA294E200FA9ED0 /* MockAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D282BA294E200FA9ED0 /* MockAuth.swift */; };
 		0A805D2D2BA2966200FA9ED0 /* Authenticatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D2C2BA2966200FA9ED0 /* Authenticatable.swift */; };
@@ -38,6 +36,10 @@
 		0A805D312BA298BB00FA9ED0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0A805D302BA298BB00FA9ED0 /* FirebaseAuth */; };
 		0A805D332BA298C900FA9ED0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0A805D322BA298C900FA9ED0 /* FirebaseAuth */; };
 		0A805D392BA29DE000FA9ED0 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D382BA29DE000FA9ED0 /* FirebaseAuthService.swift */; };
+		0A805D3B2BA2AFD500FA9ED0 /* FinancialViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D3A2BA2AFD500FA9ED0 /* FinancialViewModelTests.swift */; };
+		0A805D3D2BA2B04C00FA9ED0 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D3C2BA2B04C00FA9ED0 /* MockAPI.swift */; };
+		0A805D412BA6632000FA9ED0 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D402BA6632000FA9ED0 /* APIService.swift */; };
+		0A805D432BA6860800FA9ED0 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D422BA6860700FA9ED0 /* MockAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,14 +86,16 @@
 		0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDataService.swift; sourceTree = "<group>"; };
 		0A71D4262B82A0E9004EBDA9 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		0A71D4282B82AF5F004EBDA9 /* DCFData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCFData.swift; sourceTree = "<group>"; };
-		0A805D212BA273BC00FA9ED0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		0A805D232BA2747700FA9ED0 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		0A805D252BA27FCA00FA9ED0 /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		0A805D272BA289B600FA9ED0 /* LeonTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = LeonTests.xctestplan; sourceTree = "<group>"; };
 		0A805D282BA294E200FA9ED0 /* MockAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuth.swift; sourceTree = "<group>"; };
 		0A805D2C2BA2966200FA9ED0 /* Authenticatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticatable.swift; sourceTree = "<group>"; };
 		0A805D2E2BA2975400FA9ED0 /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
 		0A805D382BA29DE000FA9ED0 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
+		0A805D3A2BA2AFD500FA9ED0 /* FinancialViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialViewModelTests.swift; sourceTree = "<group>"; };
+		0A805D3C2BA2B04C00FA9ED0 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
+		0A805D402BA6632000FA9ED0 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		0A805D422BA6860700FA9ED0 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				0A54539C2B5A7EC2000BB273 /* API.swift */,
-				0A805D212BA273BC00FA9ED0 /* NetworkService.swift */,
+				0A805D402BA6632000FA9ED0 /* APIService.swift */,
 				0A4DCB4E2B94FF73002F23D8 /* URLSessionProtocol.swift */,
 				0A54539E2B5A80FB000BB273 /* FinancialViewModel.swift */,
 				0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */,
@@ -187,9 +191,11 @@
 			children = (
 				0A5453812B5937F7000BB273 /* LeonTests.swift */,
 				0A805D252BA27FCA00FA9ED0 /* MockURLSession.swift */,
-				0A805D232BA2747700FA9ED0 /* MockNetworkService.swift */,
 				0A805D282BA294E200FA9ED0 /* MockAuth.swift */,
 				0A805D2E2BA2975400FA9ED0 /* AuthViewModelTests.swift */,
+				0A805D3A2BA2AFD500FA9ED0 /* FinancialViewModelTests.swift */,
+				0A805D422BA6860700FA9ED0 /* MockAPIService.swift */,
+				0A805D3C2BA2B04C00FA9ED0 /* MockAPI.swift */,
 			);
 			path = LeonTests;
 			sourceTree = "<group>";
@@ -364,12 +370,12 @@
 				0A4DCB5D2B9A3260002F23D8 /* DCFModel.swift in Sources */,
 				0A5453712B5937F4000BB273 /* Item.swift in Sources */,
 				0A71D4292B82AF5F004EBDA9 /* DCFData.swift in Sources */,
-				0A805D222BA273BC00FA9ED0 /* NetworkService.swift in Sources */,
 				0A71D4272B82A0E9004EBDA9 /* AuthViewModel.swift in Sources */,
 				0A54536D2B5937F4000BB273 /* LeonApp.swift in Sources */,
 				0A71D41D2B828470004EBDA9 /* CompanyOverviewCard.swift in Sources */,
 				0A54539D2B5A7EC2000BB273 /* API.swift in Sources */,
 				0A805D2D2BA2966200FA9ED0 /* Authenticatable.swift in Sources */,
+				0A805D412BA6632000FA9ED0 /* APIService.swift in Sources */,
 				0A4DCB5B2B96811C002F23D8 /* DCFCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,9 +384,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A805D3B2BA2AFD500FA9ED0 /* FinancialViewModelTests.swift in Sources */,
 				0A805D262BA27FCB00FA9ED0 /* MockURLSession.swift in Sources */,
 				0A805D292BA294E200FA9ED0 /* MockAuth.swift in Sources */,
-				0A805D242BA2747700FA9ED0 /* MockNetworkService.swift in Sources */,
+				0A805D432BA6860800FA9ED0 /* MockAPIService.swift in Sources */,
+				0A805D3D2BA2B04C00FA9ED0 /* MockAPI.swift in Sources */,
 				0A805D2F2BA2975400FA9ED0 /* AuthViewModelTests.swift in Sources */,
 				0A5453822B5937F7000BB273 /* LeonTests.swift in Sources */,
 			);
