@@ -143,6 +143,7 @@ class FinancialViewModel: ObservableObject {
             print("Error: DCF value not calculated or invalid shares outstanding.")
             return
         }
+
         
         let dcfSharePrice = dcfValue / sharesOutstanding
         print("Corrected DCF Share Price: \(dcfSharePrice)")

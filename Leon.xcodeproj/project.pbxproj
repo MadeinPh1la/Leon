@@ -28,6 +28,7 @@
 		0A71D4252B82A046004EBDA9 /* FinancialDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */; };
 		0A71D4272B82A0E9004EBDA9 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4262B82A0E9004EBDA9 /* AuthViewModel.swift */; };
 		0A71D4292B82AF5F004EBDA9 /* DCFData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71D4282B82AF5F004EBDA9 /* DCFData.swift */; };
+
 		0A805D1E2BA13BBA00FA9ED0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0A805D1D2BA13BBA00FA9ED0 /* FirebaseAuth */; };
 		0A805D262BA27FCB00FA9ED0 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D252BA27FCA00FA9ED0 /* MockURLSession.swift */; };
 		0A805D292BA294E200FA9ED0 /* MockAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D282BA294E200FA9ED0 /* MockAuth.swift */; };
@@ -40,6 +41,7 @@
 		0A805D3D2BA2B04C00FA9ED0 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D3C2BA2B04C00FA9ED0 /* MockAPI.swift */; };
 		0A805D412BA6632000FA9ED0 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D402BA6632000FA9ED0 /* APIService.swift */; };
 		0A805D432BA6860800FA9ED0 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D422BA6860700FA9ED0 /* MockAPIService.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,7 @@
 		0A54539A2B594D71000BB273 /* FinancialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialModel.swift; sourceTree = "<group>"; };
 		0A54539C2B5A7EC2000BB273 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		0A54539E2B5A80FB000BB273 /* FinancialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialViewModel.swift; sourceTree = "<group>"; };
+
 		0A71D41A2B8264B2004EBDA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A71D41C2B828470004EBDA9 /* CompanyOverviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyOverviewCard.swift; sourceTree = "<group>"; };
 		0A71D41E2B82850A004EBDA9 /* QuoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCard.swift; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A805D1E2BA13BBA00FA9ED0 /* FirebaseAuth in Frameworks */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,8 +159,9 @@
 				0A805D402BA6632000FA9ED0 /* APIService.swift */,
 				0A4DCB4E2B94FF73002F23D8 /* URLSessionProtocol.swift */,
 				0A54539E2B5A80FB000BB273 /* FinancialViewModel.swift */,
-				0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */,
+				0A71D4072B79973A004EBDA9 /* SignUpView.swift */,
 				0A54536C2B5937F4000BB273 /* LeonApp.swift */,
+				0A71D4092B7997D5004EBDA9 /* AuthViewModel.swift */,
 				0A54539A2B594D71000BB273 /* FinancialModel.swift */,
 				0A805D382BA29DE000FA9ED0 /* FirebaseAuthService.swift */,
 				0A805D2C2BA2966200FA9ED0 /* Authenticatable.swift */,
@@ -172,7 +177,9 @@
 				0A5453722B5937F7000BB273 /* Assets.xcassets */,
 				0A5453772B5937F7000BB273 /* Leon.entitlements */,
 				0A5453782B5937F7000BB273 /* Info.plist */,
+
 				0A71D41A2B8264B2004EBDA9 /* GoogleService-Info.plist */,
+
 				0A5453742B5937F7000BB273 /* Preview Content */,
 			);
 			path = Leon;
@@ -189,6 +196,7 @@
 		0A5453802B5937F7000BB273 /* LeonTests */ = {
 			isa = PBXGroup;
 			children = (
+				0A71D40B2B799C07004EBDA9 /* AuthViewModelTests.swift */,
 				0A5453812B5937F7000BB273 /* LeonTests.swift */,
 				0A805D252BA27FCA00FA9ED0 /* MockURLSession.swift */,
 				0A805D282BA294E200FA9ED0 /* MockAuth.swift */,
@@ -233,7 +241,9 @@
 			);
 			name = Leon;
 			packageProductDependencies = (
-				0A805D1D2BA13BBA00FA9ED0 /* FirebaseAuth */,
+
+0A805D1D2BA13BBA00FA9ED0 /* FirebaseAuth */,
+
 			);
 			productName = Leon;
 			productReference = 0A5453692B5937F4000BB273 /* Leon.app */;
@@ -314,7 +324,9 @@
 			);
 			mainGroup = 0A5453602B5937F4000BB273;
 			packageReferences = (
-				0A805D1C2BA13BBA00FA9ED0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+
+0A805D1C2BA13BBA00FA9ED0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+
 			);
 			productRefGroup = 0A54536A2B5937F4000BB273 /* Products */;
 			projectDirPath = "";
@@ -334,7 +346,9 @@
 			files = (
 				0A5453762B5937F7000BB273 /* Preview Assets.xcassets in Resources */,
 				0A5453732B5937F7000BB273 /* Assets.xcassets in Resources */,
+
 				0A71D41B2B8264B2004EBDA9 /* GoogleService-Info.plist in Resources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +382,7 @@
 				0A71D41F2B82850A004EBDA9 /* QuoteCard.swift in Sources */,
 				0A54539F2B5A80FB000BB273 /* FinancialViewModel.swift in Sources */,
 				0A4DCB5D2B9A3260002F23D8 /* DCFModel.swift in Sources */,
+
 				0A5453712B5937F4000BB273 /* Item.swift in Sources */,
 				0A71D4292B82AF5F004EBDA9 /* DCFData.swift in Sources */,
 				0A71D4272B82A0E9004EBDA9 /* AuthViewModel.swift in Sources */,
@@ -384,12 +399,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A805D3B2BA2AFD500FA9ED0 /* FinancialViewModelTests.swift in Sources */,
+
+0A805D3B2BA2AFD500FA9ED0 /* FinancialViewModelTests.swift in Sources */,
 				0A805D262BA27FCB00FA9ED0 /* MockURLSession.swift in Sources */,
 				0A805D292BA294E200FA9ED0 /* MockAuth.swift in Sources */,
 				0A805D432BA6860800FA9ED0 /* MockAPIService.swift in Sources */,
 				0A805D3D2BA2B04C00FA9ED0 /* MockAPI.swift in Sources */,
 				0A805D2F2BA2975400FA9ED0 /* AuthViewModelTests.swift in Sources */,
+
+
 				0A5453822B5937F7000BB273 /* LeonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -720,8 +738,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0A805D1C2BA13BBA00FA9ED0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+
+0A805D1C2BA13BBA00FA9ED0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
+
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
@@ -731,7 +751,8 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0A805D1D2BA13BBA00FA9ED0 /* FirebaseAuth */ = {
+
+0A805D1D2BA13BBA00FA9ED0 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0A805D1C2BA13BBA00FA9ED0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
@@ -744,6 +765,7 @@
 		0A805D322BA298C900FA9ED0 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0A805D1C2BA13BBA00FA9ED0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+
 			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */

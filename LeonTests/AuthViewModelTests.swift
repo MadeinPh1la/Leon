@@ -8,6 +8,7 @@
 @testable import Leon
 import XCTest
 
+
 class AuthViewModelTests: XCTestCase {
     var viewModel: AuthViewModel!
     var mockAuth: MockAuth!
@@ -32,4 +33,5 @@ class AuthViewModelTests: XCTestCase {
     }
 
 }
+
 

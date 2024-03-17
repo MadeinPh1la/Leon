@@ -92,6 +92,8 @@ struct SignInView: View {
            }
            .padding()
        }
+
+  
 }
 
 struct SignUpView: View {
@@ -114,11 +116,6 @@ struct SignUpView: View {
                 Text(errorMessage)
                     .foregroundColor(.red)
             }
-            
-            Button("Sign Up") {
-                signUpUser()
-            }
-            .padding()
         }
         .padding()
     }

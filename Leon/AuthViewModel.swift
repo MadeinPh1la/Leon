@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-// User Authentication
+//User Authentication
 class AuthViewModel: ObservableObject {
     @Published var isAuthenticated = false
     @Published var isLoading = false
@@ -29,21 +29,25 @@ class AuthViewModel: ObservableObject {
     func signIn(email: String, password: String) {
         isLoading = true
         authService.signIn(withEmail: email, password: password) { [weak self] success, error in
+
             DispatchQueue.main.async {
-                self?.isLoading = false
+                self?.isLoading = false  // Stop loading
                 if let error = error {
                     // Log the full error
                     print("Sign in error: \(error)")
                     self?.errorMessage = error.localizedDescription
+
                 } else if success {
                     self?.isAuthenticated = true
                 } else {
                     self?.errorMessage = "An unknown error occurred"
                 }
+
             }
         }
     }
-    
+
+    // Sign Out
     func signOut() {
         do {
             try authService.signOut()
@@ -53,19 +57,25 @@ class AuthViewModel: ObservableObject {
             errorMessage = signOutError.localizedDescription
         }
     }
-    
+
+  
     func signUp(email: String, password: String, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         isLoading = true
         authService.createUser(withEmail: email, password: password) { [weak self] success, error in
+
+                                                                      
             DispatchQueue.main.async {
-                self?.isLoading = false
+                self?.isLoading = false  // Stop loading
                 if let error = error {
-                    print("Sign up error: \(error.localizedDescription)")
+
+                  print("Sign up error: \(error.localizedDescription)")
                     completion(false, error)
                 } else {
                     self?.isAuthenticated = success
                     completion(success, nil)
                 }
+
+              
             }
         }
     }
