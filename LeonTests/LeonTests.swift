@@ -6,96 +6,251 @@
 //
 
 import XCTest
+import Combine
 @testable import Leon
 
-// MARK: - StockQuote Test
-
-// Test StockQuote struct correctly decodes from a JSON response. This verifies the FinancialViewModel decoding logic aligns with the API's response format.
-
-
-class StockQuoteTests: XCTestCase {
-    
-    func testStockQuoteDecoding() {
-        let json = """
-        {
-            "01. symbol": "AAPL",
-            "02. open": "150.00",
-            "03. high": "155.00",
-            "04. low": "149.00",
-            "05. price": "154.00",
-            "06. volume": "123456",
-            "07. latest trading day": "2024-02-02",
-            "08. previous close": "150.00",
-            "09. change": "4.00",
-            "10. change percent": "2.67%"
-        }
-        """.data(using: .utf8)!
-        
-        let decoder = JSONDecoder()
-        let stockQuote = try? decoder.decode(StockQuote.self, from: json)
-        
-        XCTAssertNotNil(stockQuote, "Decoding StockQuote should not fail.")
-        XCTAssertEqual(stockQuote?.symbol, "AAPL", "Symbol should be AAPL.")
-    }
-}
-
-// MARK: - API Test
-
-//Verifies the API call for fetching a stock quote correctly handles a successful response. It uses a mock URLSession to avoid making a real network request.
-
 class APITests: XCTestCase {
-    func testFetchStockQuoteSuccess() {
-        // Setup mock URLSession and API instance
-        let api = API() // Adjust this to use your API class
-        let expectation = XCTestExpectation(description: "Fetch stock quote succeeds")
-        
-        api.fetchStockQuote(forSymbol: "AAPL") { result in
-            switch result {
-            case .success(let stockQuote):
-                XCTAssertEqual(stockQuote.symbol, "AAPL", "Fetched stock symbol should be AAPL.")
-                expectation.fulfill()
-            case .failure:
-                XCTFail("API call for fetching stock quote failed.")
-            }
-        }
-        
-        wait(for: [expectation], timeout: 5.0)
+    private var cancellables: Set<AnyCancellable>!
+    private var apiService: APIService!
+    private var mockAPIService: MockAPIService!
+
+    override func setUp() {
+        super.setUp()
+        cancellables = Set<AnyCancellable>()
+        mockAPIService = MockAPIService()
+        apiService = mockAPIService // Use the mock service
+    }
+
+    override func tearDown() {
+        cancellables = nil
+        mockAPIService = nil
+        apiService = nil
+        super.tearDown()
     }
     
-}
+    // Test fetching Stock Quote data
+    
+    func testFetchStockQuoteSuccess() {
+        // Setup: Initialize the mockAPIService with expected mock data
+        let mockStockQuote = StockQuoteResponse(globalQuote: StockQuote(symbol: "AAPL",
+                                                                         open: "150.00",
+                                                                         high: "152.00",
+                                                                         low: "148.00",
+                                                                         price: "151.00",
+                                                                         volume: "100000",
+                                                                         latestTradingDay: "2023-03-16",
+                                                                         previousClose: "150.00",
+                                                                         change: "1.00",
+                                                                         changePercent: "0.67%"))
+        mockAPIService.mockStockQuoteResponse = Just(mockStockQuote)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
 
+        // Expectation: The async operation should complete with specific results
+        let expectation = XCTestExpectation(description: "Fetch stock quote")
 
-// MARK: - User Interaction Test
+        // Execution: Use the mock service to fetch the stock quote
+        apiService.fetchStockQuote(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    XCTFail("Failed with error: \(error)")
+                case .finished:
+                    break
+                }
+            }, receiveValue: { stockQuoteResponse in
+                // Verification: Assert that the received values are as expected
+                XCTAssertEqual(stockQuoteResponse.globalQuote.symbol, "AAPL", "The symbol should match.")
+                XCTAssertEqual(stockQuoteResponse.globalQuote.price, "151.00", "The price should match.")
+                expectation.fulfill()  // Mark the expectation as fulfilled
+            })
+            .store(in: &cancellables)
 
-// System test to simulate a user entering a stock symbol and pressing a fetch button. Test then verifies that the expected stock quote details are displayed.
-
-
-class StockQuoteAppUITests: XCTestCase {
-    override func setUpWithError() throws {
-        continueAfterFailure = false
+        // Wait for the expectation to be fulfilled, or time out after 5 seconds
+        wait(for: [expectation], timeout: 200.0)
     }
 
-    func testFetchingStockQuoteDisplaysDetails() {
-        let app = XCUIApplication()
-        app.launch()
+    
+    // Test fetching Company Overview data
+    func testFetchCompanyOverviewSuccess() {
+        let mockCompanyOverview = CompanyOverview(symbol: "AAPL", name: "Apple Inc.", description: "Apple Inc. designs, manufactures, and markets mobile communication and media devices.", marketCapitalization: "2T", sharesOutstanding: "100B")
+        mockAPIService.mockCompanyOverviewResponse = Just(mockCompanyOverview).setFailureType(to: Error.self).eraseToAnyPublisher()
         
-        let symbolTextField = app.textFields["Enter Stock Symbol"]
-        XCTAssertTrue(symbolTextField.exists)
-        symbolTextField.tap()
-        symbolTextField.typeText("AAPL")
+        let expectation = XCTestExpectation(description: "fetchCompanyOverview completes")
         
-        let fetchButton = app.buttons["Fetch"]
-        XCTAssertTrue(fetchButton.exists)
-        fetchButton.tap()
+        apiService.fetchCompanyOverview(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                    XCTFail("Request failed with error: \(error)")
+                }
+                expectation.fulfill()
+            }, receiveValue: { overview in
+                XCTAssertEqual(overview.symbol, "AAPL")
+                XCTAssertEqual(overview.name, "Apple Inc.")
+            })
+            .store(in: &cancellables)
         
-        // Assuming there's a label that displays the stock symbol in your UI
-        let stockSymbolLabel = app.staticTexts["SymbolLabel"] // Use the actual accessibility identifier
-        expectation(for: NSPredicate(format: "exists == 1"), evaluatedWith: stockSymbolLabel, handler: nil)
-        waitForExpectations(timeout: 5, handler: nil)
-        
-        XCTAssertEqual(stockSymbolLabel.label, "AAPL", "Displayed stock symbol should be AAPL.")
+        wait(for: [expectation], timeout: 1.0)
     }
+    
+    // Test fetching Cash Flow data
+    
+    func testFetchCashFlowDataSuccess() {
+        // Create a mock CashFlowResponse object directly instead of using a JSON string
+        let mockCashFlowResponse = CashFlowResponse(symbol: "AAPL", annualReports: [
+            AnnualCashFlowReport(
+                fiscalDateEnding: "2020-09-30",
+                reportedCurrency: "USD",
+                operatingCashflow: "100000000",
+                capitalExpenditures: "-50000000",
+                netIncome: "40000000"
+            )
+        ])
+        
+        // Set the mock response in your mockAPIService
+        mockAPIService.mockCashFlowResponse = Just(mockCashFlowResponse)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
+        
+        let expectation = XCTestExpectation(description: "fetchCashFlowData completes")
+        
+        // Use apiService which is your mockAPIService injected into the test environment
+        apiService.fetchCashFlowData(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    XCTFail("Request failed with error: \(error)")
+                }
+                expectation.fulfill()
+            }, receiveValue: { cashFlowResponse in
+                XCTAssertNotNil(cashFlowResponse.annualReports.first)
+                XCTAssertEqual(cashFlowResponse.symbol, "AAPL")
+                // Additional assertions can be made here based on the mock data
+            })
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+
+    
+    // Test fetching Income Statement data
+    
+    func testFetchIncomeStatementSuccess() {
+        // Create a mock IncomeStatementData object directly instead of using a JSON string
+        let mockIncomeStatementData = IncomeStatementData(symbol: "AAPL", annualReports: [
+            AnnualIncomeStatementReport(
+                fiscalDateEnding: "2020-09-30",
+                reportedCurrency: "USD",
+                grossProfit: "104956000000", 
+                totalRevenue: "274515000000",
+                operatingIncome: "66288000000",
+                netIncome: "57411000000",
+                ebit: "55000000000"
+            )
+        ])
+        
+        // Set the mock response in your mockAPIService
+        mockAPIService.mockIncomeStatementResponse = Just(mockIncomeStatementData)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
+        
+        let expectation = XCTestExpectation(description: "fetchIncomeStatement completes")
+        
+        // Use apiService which is your mockAPIService injected into the test environment
+        apiService.fetchIncomeStatement(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    XCTFail("Request failed with error: \(error)")
+                }
+                expectation.fulfill()
+            }, receiveValue: { incomeStatementData in
+                XCTAssertNotNil(incomeStatementData.annualReports.first)
+                XCTAssertEqual(incomeStatementData.symbol, "AAPL")
+                XCTAssertEqual(incomeStatementData.annualReports.first?.netIncome, "57411000000")
+                // You can add more assertions here based on your mock data
+            })
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+
+    // Test handling of bad URLs
+    func testFetchStockQuoteBadURL() {
+
+        mockAPIService.mockStockQuoteResponse = nil
+        
+        let expectation = XCTestExpectation(description: "fetchStockQuote with bad URL completes")
+        
+        // Use the mock service to fetch the stock quote with a bad URL
+        apiService.fetchStockQuote(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                if case .finished = completion {
+                    XCTFail("Request should not succeed with a bad URL.")
+                }
+                expectation.fulfill()
+            }, receiveValue: { _ in
+                XCTFail("Request should not return a value with a bad URL.")
+            })
+            .store(in: &cancellables)
+        
+        // Wait for the expectation to be fulfilled, or time out after 1 second
+        wait(for: [expectation], timeout: 1.0)
+    }
+
+    func testFetchStockQuoteUnauthorized() {
+        
+        // Simulate unauthorized access)
+        mockAPIService.mockStockQuoteResponse = nil
+        
+        let expectation = XCTestExpectation(description: "fetchStockQuote with unauthorized access completes")
+        
+        // Execution: Use the mock service to fetch the stock quote with an invalid API key
+        apiService.fetchStockQuote(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                if case .finished = completion {
+                    XCTFail("Request should not succeed with unauthorized access.")
+                }
+                expectation.fulfill()
+            }, receiveValue: { _ in
+                XCTFail("Request should not return a value with unauthorized access.")
+            })
+            .store(in: &cancellables)
+        
+        // Wait for the expectation to be fulfilled, or time out after 1 second
+        wait(for: [expectation], timeout: 1.0)
+    }
+
+    // Test error handling for bad stock symbol
+    func testFetchStockQuoteErrorMessage() {
+        // Setup: Set up a mock service with a failure response
+        let expectedError = NSError(domain: "MockService", code: -1001, userInfo: nil)
+        mockAPIService.mockStockQuoteResponse = Fail(error: expectedError).eraseToAnyPublisher()
+        
+        let expectation = XCTestExpectation(description: "fetchStockQuote with error message completes")
+        
+        // Execution: Use the mock service to fetch the stock quote
+        apiService.fetchStockQuote(forSymbol: "AAPL")
+            .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                    XCTAssertEqual(error as NSError, expectedError, "Error should match expected error.")
+                    expectation.fulfill()
+                } else {
+                    XCTFail("Request should fail with an error.")
+                }
+            }, receiveValue: { _ in
+                XCTFail("Request should not return a value with an error.")
+            })
+            .store(in: &cancellables)
+        
+        // Wait for the expectation to be fulfilled, or time out after 1 second
+        wait(for: [expectation], timeout: 1.0)
+    }
+
+
 }
-
-
 

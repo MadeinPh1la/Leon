@@ -14,10 +14,8 @@ import FirebaseAuth
 struct ContentView: View {
     @State private var symbol: String = ""
     @EnvironmentObject var authViewModel: AuthViewModel
-    //  @StateObject var financialViewModel = FinancialViewModel()
-    @ObservedObject var financialViewModel = FinancialViewModel()
-    
-    
+    @StateObject var financialViewModel = FinancialViewModel(apiService: API.shared)
+
     var body: some View {
         Group {
             if authViewModel.isAuthenticated {
@@ -95,6 +93,7 @@ struct SignInView: View {
            .padding()
        }
 
+  
 }
 
 struct SignUpView: View {

@@ -8,29 +8,28 @@
 import Foundation
 import Combine
 
-class API {
+class API: APIService {
     static let shared = API()
     private let apiKey = "EEU03VBW3KPPRD7O"
-    private let session: URLSession
     
-    init(session: URLSession = .shared) {
-        self.session = session
-    }
+    private init() {} // Singleton to prevent multiple instances
     
-    
-    // Fetch sotck quote using Combine
-    func fetchStockQuote(forSymbol symbol: String) -> AnyPublisher<StockQuote, Error> {
-        guard let url = URL(string: "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=\(symbol)&apikey=\(apiKey)") else {
-            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
-        }
-        
-        return session.dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: StockQuoteResponse.self, decoder: JSONDecoder())
-            .map(\.globalQuote) // Assuming globalQuote is the property you want
-            .receive(on: RunLoop.main)
-            .eraseToAnyPublisher()
-    }
+    // Implementation of fetchData adhering to APIService
+    func fetchData<T: Decodable>(from url: URL, responseType: T.Type) -> AnyPublisher<T, Error> {
+           URLSession.shared.dataTaskPublisher(for: url)
+               .map(\.data)
+               .decode(type: T.self, decoder: JSONDecoder())
+               .mapError { $0 as Error }
+               .eraseToAnyPublisher()
+       }
+
+    // Fetch stock quote using Combine
+    func fetchStockQuote(forSymbol symbol: String) -> AnyPublisher<StockQuoteResponse, Error> {
+         guard let url = URL(string: "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=\(symbol)&apikey=\(apiKey)") else {
+             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+         }
+        return fetchData(from: url, responseType: StockQuoteResponse.self)
+     }
     
     // Fetch data for company overview using Combine
     func fetchCompanyOverview(forSymbol symbol: String) -> AnyPublisher<CompanyOverview, Error> {
@@ -38,55 +37,36 @@ class API {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
         
-        return session.dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: CompanyOverview.self, decoder: JSONDecoder())
-            .receive(on: RunLoop.main)
-            .eraseToAnyPublisher()
+        return fetchData(from: url, responseType: CompanyOverview.self)
     }
     
-    // Fetch Cash Flow data using combine
-    func fetchCashFlowData(forSymbol symbol: String) -> AnyPublisher<CashFlowResponse, Error> {
+    // Fetch Cash Flow data using Combine
+    public func fetchCashFlowData(forSymbol symbol: String) -> AnyPublisher<CashFlowResponse, Error> {
         let urlString = "https://www.alphavantage.co/query?function=CASH_FLOW&symbol=\(symbol)&apikey=\(apiKey)"
         guard let url = URL(string: urlString) else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
 
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: CashFlowResponse.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+        return fetchData(from: url, responseType: CashFlowResponse.self)
     }
     
-    
-    //Fetch additional data points from company's Income Statement for DCF calculation
-    func fetchIncomeStatement(forSymbol symbol: String) -> AnyPublisher<IncomeStatementData, Error> {
+    // Fetch additional data points from company's Income Statement for DCF calculation
+    public func fetchIncomeStatement(forSymbol symbol: String) -> AnyPublisher<IncomeStatementData, Error> {
         let urlString = "https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=\(symbol)&apikey=\(apiKey)"
         guard let url = URL(string: urlString) else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
         
-        return session.dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: IncomeStatementData.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+        return fetchData(from: url, responseType: IncomeStatementData.self)
     }
     
-    //Fetch additional data points from company's Balance Sheet for an even more complete DCF calculation
-    
-    
-    func fetchBalanceSheet(forSymbol symbol: String) -> AnyPublisher<BalanceSheetData, Error> {
+    // Fetch additional data points from company's Balance Sheet for an even more complete DCF calculation
+    public func fetchBalanceSheet(forSymbol symbol: String) -> AnyPublisher<BalanceSheetData, Error> {
         let urlString = "https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol=\(symbol)&apikey=\(apiKey)"
         guard let url = URL(string: urlString) else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
         
-        return session.dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: BalanceSheetData.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+        return fetchData(from: url, responseType: BalanceSheetData.self)
     }
 }

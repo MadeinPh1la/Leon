@@ -10,22 +10,24 @@ import Foundation
 import Combine
 
 class FinancialViewModel: ObservableObject {
-    @Published var quote: StockQuote?
+    @Published var quote: StockQuote? = nil
     @Published var stockQuoteState: DataState = .idle
-    @Published var errorMessage: String?
-    @Published var companyOverview: CompanyOverview?
-    @Published var dcfValue: Double?
+    @Published var errorMessage: String? = nil
+    @Published var companyOverview: CompanyOverview? = nil
+    @Published var dcfValue: Double? = nil
     @Published var triggerUpdate: Bool = false
-    @Published var sharePrice: Double?
+    @Published var sharePrice: Double? = nil
+    @Published var dcfSharePrice: Double = 0.0
 
 
     var dcfModel = DCFModel()
-    private var cancellables = Set<AnyCancellable>()
-    private let api: API
     
-    init(api: API = API.shared) {
-        self.api = api
-    }
+    private var cancellables = Set<AnyCancellable>()
+    private let apiService: APIService
+
+    init(apiService: APIService) {
+            self.apiService = apiService
+        }
     
     enum DataState {
         case idle, loading, loaded, error(String)
@@ -35,17 +37,19 @@ class FinancialViewModel: ObservableObject {
     func fetchStockQuote(forSymbol symbol: String) {
         print("Fetching stock quote for symbol: \(symbol)")
         stockQuoteState = .loading
-        api.fetchStockQuote(forSymbol: symbol)
+        apiService.fetchStockQuote(forSymbol: symbol)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
-                if case .failure(let error) = completion {
+                switch completion {
+                case .failure(let error):
                     self?.errorMessage = "Failed to fetch quote: \(error.localizedDescription)"
                     self?.stockQuoteState = .error(error.localizedDescription)
                     print("Error fetching stock quote: \(error.localizedDescription)")
+                case .finished:
+                    self?.stockQuoteState = .loaded
                 }
-                self?.stockQuoteState = .loaded
-            }, receiveValue: { [weak self] quote in
-                self?.quote = quote
+            }, receiveValue: { [weak self] response in
+                self?.quote = response.globalQuote // Adjusted to use the property from response
                 print("Stock quote fetched successfully.")
             })
             .store(in: &cancellables)
@@ -54,7 +58,7 @@ class FinancialViewModel: ObservableObject {
     // Fetch company overview data
     func fetchCompanyOverview(forSymbol symbol: String) {
         print("Fetching company overview for symbol: \(symbol)")
-        api.fetchCompanyOverview(forSymbol: symbol)
+        apiService.fetchCompanyOverview(forSymbol: symbol)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 if case .failure(let error) = completion {
@@ -74,9 +78,9 @@ class FinancialViewModel: ObservableObject {
         stockQuoteState = .loading
         
         // Chain publishers for fetching Cash Flow, Income Statement, and Balance Sheet data
-        let cashFlowPublisher = api.fetchCashFlowData(forSymbol: symbol).print("CashFlow")
-        let incomeStatementPublisher = api.fetchIncomeStatement(forSymbol: symbol).print("IncomeStatement")
-        let balanceSheetPublisher = api.fetchBalanceSheet(forSymbol: symbol).print("BalanceSheet")
+        let cashFlowPublisher = apiService.fetchCashFlowData(forSymbol: symbol).print("CashFlow")
+        let incomeStatementPublisher = apiService.fetchIncomeStatement(forSymbol: symbol).print("IncomeStatement")
+        let balanceSheetPublisher = apiService.fetchBalanceSheet(forSymbol: symbol).print("BalanceSheet")
 
         Publishers.Zip3(cashFlowPublisher, incomeStatementPublisher, balanceSheetPublisher)
             .receive(on: DispatchQueue.main)

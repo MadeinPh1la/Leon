@@ -8,21 +8,31 @@
 // URLSessionProtocols.swift
 
 import Foundation
+import Combine
 
 protocol URLSessionDataTaskProtocol {
     func resume()
 }
 
-// Extending URLSessionDataTask to conform to URLSessionDataTaskProtocol
 extension URLSessionDataTask: URLSessionDataTaskProtocol {}
 
-protocol URLSessionProtocol {
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol
+public protocol URLSessionProtocol {
+    func fetchData<T: Decodable>(from url: URL, responseType: T.Type) -> AnyPublisher<T, Error>
 }
 
+
 extension URLSession: URLSessionProtocol {
-    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-        let task: URLSessionDataTask = self.dataTask(with: url, completionHandler: completionHandler)
-        return task as URLSessionDataTaskProtocol
+    public func fetchData<T: Decodable>(from url: URL, responseType: T.Type) -> AnyPublisher<T, Error> {
+        self.dataTaskPublisher(for: url)
+            .mapError { $0 as Error }  // Convert URLError to Error
+            .flatMap { pair in
+                Just(pair.data)
+                    .decode(type: T.self, decoder: JSONDecoder())
+                    .mapError { $0 as Error }  // Convert DecodingError to Error
+                    .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
 }
+
+

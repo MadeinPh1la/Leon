@@ -9,8 +9,12 @@ import SwiftUI
 
 struct MainAppView: View {
     @State private var symbol: String = ""
-    @StateObject var financialViewModel = FinancialViewModel(api: API.shared)
+    @ObservedObject var financialViewModel: FinancialViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
+    
+    init(financialViewModel: FinancialViewModel) {
+        self.financialViewModel = financialViewModel
+    }
 
     var body: some View {
         NavigationView {

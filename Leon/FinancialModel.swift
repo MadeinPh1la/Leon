@@ -9,8 +9,8 @@ import Foundation
 
 // Structs to decode the JSON response
 
-struct StockQuoteResponse: Decodable {
-    let globalQuote: StockQuote
+public struct StockQuoteResponse: Decodable {
+    public let globalQuote: StockQuote
 
     enum CodingKeys: String, CodingKey {
         case globalQuote = "Global Quote"
@@ -18,7 +18,7 @@ struct StockQuoteResponse: Decodable {
 }
 
 // Stock quote data
-struct StockQuote: Decodable {
+public struct StockQuote: Decodable {
     let symbol: String
     let open: String?
     let high: String?
@@ -49,7 +49,7 @@ struct StockQuote: Decodable {
 }
 
 
-struct CompanyOverview: Codable {
+public struct CompanyOverview: Codable {
     var symbol: String
     var name: String
     var description: String
@@ -68,7 +68,7 @@ struct CompanyOverview: Codable {
     }
 }
 
-struct AnnualReport: Codable {
+public struct AnnualReport: Codable {
     let operatingCashFlow: String
     let capitalExpenditures: String
     let fiscalDateEnding: String
@@ -80,31 +80,31 @@ struct AnnualReport: Codable {
     let preTaxIncome: String // Needed for tax rate calculation
 }
 
-struct IncomeStatement: Codable {
+public struct IncomeStatement: Codable {
     let ebit: Double
     let taxRate: Double
 }
 
-struct CashFlowReport: Codable {
+public struct CashFlowReport: Codable {
     let fiscalDateEnding: String
     let reportedCurrency: String
     let capitalExpenditures: String
 }
 
-struct CashFlowStatement: Decodable {
+public struct CashFlowStatement: Decodable {
     let annualReports: [AnnualReport]
 }
 
-struct CashFlowData: Decodable {
+public struct CashFlowData: Decodable {
     let freeCashFlow: Double?
 }
 
-struct CashFlowResponse: Decodable {
+public struct CashFlowResponse: Decodable {
     var symbol: String
     var annualReports: [AnnualCashFlowReport]
 }
 
-struct AnnualCashFlowReport: Decodable {
+public struct AnnualCashFlowReport: Decodable {
     var fiscalDateEnding: String
     var reportedCurrency: String
     var operatingCashflow: String
@@ -121,17 +121,17 @@ struct AnnualCashFlowReport: Decodable {
     }
 }
 
-struct IncomeStatementResponse: Decodable {
+public struct IncomeStatementResponse: Decodable {
     let symbol: String
     let annualReports: [AnnualIncomeStatementReport]
 }
 
-struct BalanceSheetResponse: Codable {
+public struct BalanceSheetResponse: Codable {
     let symbol: String
     let annualReports: [AnnualBalanceSheetReport]
 }
 
-struct AnnualBalanceSheetReport: Codable {
+public struct AnnualBalanceSheetReport: Codable {
     let fiscalDateEnding: String
     let reportedCurrency: String
     let totalAssets: String
@@ -142,7 +142,7 @@ struct AnnualBalanceSheetReport: Codable {
     let longTermDebt: String
 }
 
-struct AnnualIncomeStatementReport: Codable {
+public struct AnnualIncomeStatementReport: Codable {
     let fiscalDateEnding: String
     let reportedCurrency: String
     let grossProfit: String
@@ -152,13 +152,13 @@ struct AnnualIncomeStatementReport: Codable {
     let ebit: String
 }
 
-struct IncomeStatementData: Codable {
+public struct IncomeStatementData: Codable {
     let symbol: String
     let annualReports: [AnnualIncomeStatementReport]
 }
 
 
-struct BalanceSheetData: Codable {
+public struct BalanceSheetData: Codable {
     let symbol: String
     let annualReports: [AnnualBalanceSheetReport]
 }

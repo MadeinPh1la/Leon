@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 import Combine
 
 //User Authentication
@@ -14,22 +13,23 @@ class AuthViewModel: ObservableObject {
     @Published var isAuthenticated = false
     @Published var isLoading = false
     @Published var errorMessage: String?
-    
-    init() {
-        // Check the authentication state at initialization
+
+    private var authService: Authenticatable
+
+    // Use dependency injection to allow for testing with mock authentication services
+    init(authService: Authenticatable = FirebaseAuthService()) {
+        self.authService = authService
         checkAuthState()
     }
     
-    func checkAuthState() {
-
-        // Update isAuthenticated based on Firebase Auth state
-        isAuthenticated = Auth.auth().currentUser != nil
+    func checkAuthState() { 
+        isAuthenticated = authService.isUserAuthenticated
     }
     
-    //Sign In
-    func signIn(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-        isLoading = true  // Start loading
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+    func signIn(email: String, password: String) {
+        isLoading = true
+        authService.signIn(withEmail: email, password: password) { [weak self] success, error in
+
             DispatchQueue.main.async {
                 self?.isLoading = false  // Stop loading
                 if let error = error {
@@ -37,11 +37,12 @@ class AuthViewModel: ObservableObject {
                     print("Sign in error: \(error)")
                     self?.errorMessage = error.localizedDescription
 
-                    return
+                } else if success {
+                    self?.isAuthenticated = true
+                } else {
+                    self?.errorMessage = "An unknown error occurred"
                 }
-                // On success, update isAuthenticated and call the completion handler with true and nil for the error
-                self?.isAuthenticated = true
-                completion(true, nil)
+
             }
         }
     }
@@ -49,25 +50,32 @@ class AuthViewModel: ObservableObject {
     // Sign Out
     func signOut() {
         do {
-            try Auth.auth().signOut()
+            try authService.signOut()
             isAuthenticated = false
         } catch let signOutError as NSError {
             print("Error signing out: \(signOutError.localizedDescription)")
+            errorMessage = signOutError.localizedDescription
         }
     }
 
-    // Sign Up
-    func signUp(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-        // Implementation
-        isLoading = true  // Start loading
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+  
+    func signUp(email: String, password: String, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        isLoading = true
+        authService.createUser(withEmail: email, password: password) { [weak self] success, error in
+
+                                                                      
             DispatchQueue.main.async {
                 self?.isLoading = false  // Stop loading
                 if let error = error {
-                    // Handle error
-                    return
+
+                  print("Sign up error: \(error.localizedDescription)")
+                    completion(false, error)
+                } else {
+                    self?.isAuthenticated = success
+                    completion(success, nil)
                 }
-                self?.isAuthenticated = true
+
+              
             }
         }
     }
