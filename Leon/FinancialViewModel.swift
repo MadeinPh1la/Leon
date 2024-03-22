@@ -18,21 +18,22 @@ class FinancialViewModel: ObservableObject {
     @Published var triggerUpdate: Bool = false
     @Published var sharePrice: Double? = nil
     @Published var dcfSharePrice: Double = 0.0
+    @Published var newsFeed: [NewsArticle] = []
 
-
+    
     var dcfModel = DCFModel()
     
     private var cancellables = Set<AnyCancellable>()
     private let apiService: APIService
-
+    
     init(apiService: APIService) {
-            self.apiService = apiService
-        }
+        self.apiService = apiService
+    }
     
     enum DataState {
         case idle, loading, loaded, error(String)
     }
-
+    
     // Fetch stock quote
     func fetchStockQuote(forSymbol symbol: String) {
         print("Fetching stock quote for symbol: \(symbol)")
@@ -49,12 +50,12 @@ class FinancialViewModel: ObservableObject {
                     self?.stockQuoteState = .loaded
                 }
             }, receiveValue: { [weak self] response in
-                self?.quote = response.globalQuote // Adjusted to use the property from response
+                self?.quote = response.globalQuote
                 print("Stock quote fetched successfully.")
             })
             .store(in: &cancellables)
     }
-
+    
     // Fetch company overview data
     func fetchCompanyOverview(forSymbol symbol: String) {
         print("Fetching company overview for symbol: \(symbol)")
@@ -72,7 +73,7 @@ class FinancialViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    // Load the fetched DCF Value and update share price 
+    // Load the fetched DCF Value and update share price
     func loadDCFValue(forSymbol symbol: String) {
         print("loadDCFValue func triggered for symbol: \(symbol)")
         stockQuoteState = .loading
@@ -81,7 +82,7 @@ class FinancialViewModel: ObservableObject {
         let cashFlowPublisher = apiService.fetchCashFlowData(forSymbol: symbol).print("CashFlow")
         let incomeStatementPublisher = apiService.fetchIncomeStatement(forSymbol: symbol).print("IncomeStatement")
         let balanceSheetPublisher = apiService.fetchBalanceSheet(forSymbol: symbol).print("BalanceSheet")
-
+        
         Publishers.Zip3(cashFlowPublisher, incomeStatementPublisher, balanceSheetPublisher)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
@@ -96,8 +97,7 @@ class FinancialViewModel: ObservableObject {
             }, receiveValue: { [weak self] cashFlowData, incomeStatementData, balanceSheetData in
                 guard let self = self else { return }
                 print("Processing fetched financial data for DCF calculation...")
-
-                // Assuming 'annualReports.first' and calculation for freeCashFlow
+                
                 guard let cashFlowReport = cashFlowData.annualReports.first,
                       let latestIncomeReport = incomeStatementData.annualReports.first,
                       let latestBalanceSheet = balanceSheetData.annualReports.first,
@@ -106,16 +106,16 @@ class FinancialViewModel: ObservableObject {
                     print("Error: Latest financial reports not found or data missing.")
                     return
                 }
-
+                
                 let freeCashFlow = operatingCashFlow - capitalExpenditures
-
+                
                 guard let netIncome = Double(latestIncomeReport.netIncome),
                       let longTermDebt = Double(latestBalanceSheet.longTermDebt),
                       let cashAndEquivalents = Double(latestBalanceSheet.cashAndCashEquivalentsAtCarryingValue) else {
                     print("Error converting financial data to Double.")
                     return
                 }
-
+                
                 // Perform DCF calculation using your dcfModel's method, ensure it accepts the correct parameters
                 let calculatedDCFValue = self.dcfModel.calculateDCF(
                     freeCashFlow: freeCashFlow,
@@ -133,6 +133,7 @@ class FinancialViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    // Update DCF share price with calculated value
     func updateSharePrice() {
         // Set DCF Value
         guard let dcfValue = dcfValue,
@@ -148,4 +149,20 @@ class FinancialViewModel: ObservableObject {
         print("Corrected DCF Share Price: \(dcfSharePrice)")
         self.sharePrice = dcfSharePrice
     }
+    
+    // Fetch news feed
+    
+    func loadNewsFeed(forSymbol symbol: String) {
+        apiService.fetchNewsFeed(forSymbol: symbol)
+            .sink(receiveCompletion: { completion in
+                print(completion) // Debug completion
+            }, receiveValue: { [weak self] newsFeed in
+                self?.newsFeed = newsFeed.feed
+                print("News feed updated with \(newsFeed.feed.count) articles.")
+            })
+            .store(in: &cancellables)
+    }
+
+
 }
+

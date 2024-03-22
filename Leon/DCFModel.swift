@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 class DCFModel {
     var highGrowthRate: Double = 0.15
     var transitionGrowthRate: Double = 0.10
@@ -17,19 +15,22 @@ class DCFModel {
 
     // Include company's cash flow statement, balance sheet and income statement data in the calculation
     func calculateDCF(freeCashFlow: Double, netIncome: Double, longTermDebt: Double, cashAndEquivalents: Double) -> Double {
-            let initialFCF = freeCashFlow
-            let highGrowthFCF = calculateStageFCF(initialFCF: initialFCF, growthRate: highGrowthRate, years: 5)
-            let transitionFCF = calculateTransitionStageFCF(lastHighGrowthFCF: highGrowthFCF.last!, startGrowthRate: transitionGrowthRate, endGrowthRate: perpetualGrowthRate, years: 5)
-            let terminalValue = calculateTerminalValue(lastFCF: transitionFCF.last!, growthRate: perpetualGrowthRate)
-            
-            let pvHighGrowthFCF = presentValueOfCashFlows(cashFlows: highGrowthFCF)
-            let pvTransitionFCF = presentValueOfCashFlows(cashFlows: transitionFCF)
-            let pvTerminalValue = terminalValue / pow(1 + discountRate, 10)
-            
-           // return pvHighGrowthFCF + pvTransitionFCF + pvTerminalValue
-            return (freeCashFlow + netIncome) - (longTermDebt - cashAndEquivalents)
+        let initialFCF = freeCashFlow
+        let highGrowthFCF = calculateStageFCF(initialFCF: initialFCF, growthRate: highGrowthRate, years: 5)
+        let transitionFCF = calculateTransitionStageFCF(lastHighGrowthFCF: highGrowthFCF.last!, startGrowthRate: transitionGrowthRate, endGrowthRate: perpetualGrowthRate, years: 5)
+        let terminalValue = calculateTerminalValue(lastFCF: transitionFCF.last!, growthRate: perpetualGrowthRate)
+        
+        let pvHighGrowthFCF = presentValueOfCashFlows(cashFlows: highGrowthFCF)
+        let pvTransitionFCF = presentValueOfCashFlows(cashFlows: transitionFCF)
+        let pvTerminalValue = terminalValue / pow(1 + discountRate, 10)
+    
+        let totalPV = pvHighGrowthFCF + pvTransitionFCF + pvTerminalValue
+        let netDebt = longTermDebt - cashAndEquivalents
+        let enterpriseValue = totalPV - netDebt // Adjusting for net debt to get to equity value might be what you're looking for
+        
+        return enterpriseValue
+    }
 
-        }
         
         private func calculateStageFCF(initialFCF: Double, growthRate: Double, years: Int) -> [Double] {
             var cashFlows: [Double] = []

@@ -163,3 +163,32 @@ public struct BalanceSheetData: Codable {
     let annualReports: [AnnualBalanceSheetReport]
 }
 
+struct NewsFeed: Decodable {
+    let items: String
+    let feed: [NewsArticle]
+}
+
+struct NewsArticle: Identifiable, Decodable, Hashable {
+    let id = UUID()
+    let banner_image: String
+    let title: String
+    let url: String
+    let time_published: String
+    let summary: String
+
+    private enum CodingKeys: String, CodingKey {
+        case banner_image, title, url, time_published, summary
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // Decode other properties as usual
+        self.title = try container.decode(String.self, forKey: .title)
+        self.url = try container.decode(String.self, forKey: .url)
+        self.time_published = try container.decode(String.self, forKey: .time_published)
+        self.summary = try container.decode(String.self, forKey: .summary)
+        // Provide a default value for `banner_image` if missing
+        self.banner_image = try container.decodeIfPresent(String.self, forKey: .banner_image) ?? "Default_Image_URL"
+    }
+}
+

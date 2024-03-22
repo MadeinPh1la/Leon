@@ -12,6 +12,8 @@ import FirebaseCore
 @main
 
 struct LeonApp: App {
+    @StateObject private var financialViewModel = FinancialViewModel(apiService: API.shared)
+
     
     init() {
             FirebaseApp.configure()
@@ -23,9 +25,10 @@ struct LeonApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
             // Provide AuthViewModel as an environment object
                 .environmentObject(authViewModel)
+                .environmentObject(financialViewModel)
 
         }
     }

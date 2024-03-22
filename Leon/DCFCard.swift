@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DCFCard: View {
-    @ObservedObject var viewModel: FinancialViewModel  // Ensure this is passed to the view
+    @ObservedObject var viewModel: FinancialViewModel  
 
     var dcfData: DCFData
 

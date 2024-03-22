@@ -69,4 +69,19 @@ class API: APIService {
         
         return fetchData(from: url, responseType: BalanceSheetData.self)
     }
+    
+    // Fetch news
+    func fetchNewsFeed(forSymbol symbol: String) -> AnyPublisher<NewsFeed, Error> {
+        let urlString = "https://www.alphavantage.co/query?function=NEWS_SENTIMENT&symbol=\(symbol)&apikey=\(apiKey)"
+
+        guard let url = URL(string: urlString) else {
+            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+        }
+
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: NewsFeed.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
 }

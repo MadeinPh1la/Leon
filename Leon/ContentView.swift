@@ -39,7 +39,21 @@ struct SignInView: View {
 
     var body: some View {
         VStack {
+            
+            Spacer()
+            Image(systemName: "person.crop.circle.fill") // Consider replacing with your app logo
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100, height: 100)
+                .padding(.bottom, 50)
+            
+            Spacer()
+
+            
                if showSignUp {
+                   
+                   Spacer()
+
                    // Sign Up Form
                    TextField("Email", text: $email)
                        .autocapitalization(.none)
@@ -66,15 +80,20 @@ struct SignInView: View {
                            }
                        }
                    }
+                                      
                } else {
                    // Sign In Form
+                   
                    TextField("Email", text: $email)
                        .autocapitalization(.none)
                        .textFieldStyle(RoundedBorderTextFieldStyle())
                        .disabled(authViewModel.isLoading)  // Disable input while loading
+                       .padding(.horizontal)
+
                    SecureField("Password", text: $password)
                        .textFieldStyle(RoundedBorderTextFieldStyle())
                        .disabled(authViewModel.isLoading)  // Disable input while loading
+                       .padding(.horizontal)
                    
                    if authViewModel.isLoading {
                        ProgressView()
@@ -84,12 +103,16 @@ struct SignInView: View {
                        }
                    }
                }
+            
                
                // Toggle Button
-               Button(showSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up") {
+
+            Button(showSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up") {
                    showSignUp.toggle()
                }
            }
+        Spacer()
+
            .padding()
        }
 }
@@ -102,6 +125,7 @@ struct SignUpView: View {
     
     var body: some View {
         VStack {
+            
             TextField("Email", text: $email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
@@ -119,6 +143,7 @@ struct SignUpView: View {
                 signUpUser()
             }
             .padding()
+            
         }
         .padding()
     }
