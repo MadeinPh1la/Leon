@@ -17,19 +17,49 @@ struct MainAppView: View {
     }
     
     var body: some View {
-            NavigationView {
-                VStack {
-                    symbolEntryField
-                    
-                    fetchButton
-                    
-                    dataDisplayScrollView
-                }
-                .navigationTitle("Stock Data")
-                .toolbar {
-                    signOutToolbarItem
-                }
+        NavigationView {
+            VStack {
+                symbolEntryField
+                
+                fetchButton
+                
+                // Trending section
+                if !financialViewModel.topGainers.isEmpty {
+                                Text("Top Gainers").font(.headline).padding(.top)
+                                ForEach(financialViewModel.topGainers) { stock in
+                                    VStack(alignment: .leading) {
+                                        Text(stock.ticker).fontWeight(.bold)
+                                        Text("Price: \(stock.price)")
+                                        Text("Change: \(stock.changeAmount) (\(stock.changePercentage)%)")
+                                    }
+                                    .padding(.vertical, 2)
+                                }
+                            }
+                            
+                            if !financialViewModel.topLosers.isEmpty {
+                                Text("Top Losers").font(.headline).padding(.top)
+                                ForEach(financialViewModel.topLosers) { stock in
+                                    VStack(alignment: .leading) {
+                                        Text(stock.ticker).fontWeight(.bold)
+                                        Text("Price: \(stock.price)")
+                                        Text("Change: \(stock.changeAmount) (\(stock.changePercentage)%)")
+                                    }
+                                    .padding(.vertical, 2)
+                                }
+                            }
+                
+                dataDisplayScrollView
             }
+            
+            .navigationTitle("Stock Data")
+            .toolbar {
+                signOutToolbarItem
+            }
+            
+            .onAppear {
+                 financialViewModel.loadTrendingStocks()
+             }
+        }
             
         }
     

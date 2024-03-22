@@ -19,6 +19,11 @@ class FinancialViewModel: ObservableObject {
     @Published var sharePrice: Double? = nil
     @Published var dcfSharePrice: Double = 0.0
     @Published var newsFeed: [NewsArticle] = []
+    @Published var trendingStocks: [Stock] = []
+    @Published var topGainers: [Stock] = []
+    @Published var topLosers: [Stock] = []
+
+
 
     
     var dcfModel = DCFModel()
@@ -162,7 +167,17 @@ class FinancialViewModel: ObservableObject {
             })
             .store(in: &cancellables)
     }
-
-
+    
+    func loadTrendingStocks() {
+        apiService.fetchTrendingStocks()
+            .sink(receiveCompletion: { completion in
+                // Handle completion
+            }, receiveValue: { [weak self] response in
+                // Limiting to 5 items for each category
+                self?.topGainers = Array(response.topGainers.prefix(2))
+                self?.topLosers = Array(response.topLosers.prefix(2))
+            })
+            .store(in: &cancellables)
+    }
 }
 

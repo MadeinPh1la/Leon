@@ -16,4 +16,6 @@ protocol APIService {
     func fetchIncomeStatement(forSymbol symbol: String) -> AnyPublisher<IncomeStatementData, Error>
     func fetchBalanceSheet(forSymbol symbol: String) -> AnyPublisher<BalanceSheetData, Error>
     func fetchNewsFeed(forSymbol symbol: String) -> AnyPublisher<NewsFeed, Error>
+    func fetchTrendingStocks() -> AnyPublisher<TrendingResponse, Error>
+
 }

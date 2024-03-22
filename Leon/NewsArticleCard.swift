@@ -11,8 +11,8 @@ struct NewsArticleCard: View {
     let article: NewsArticle
     
     var body: some View {
-        NavigationLink(destination: Text("Testing navigation to \(article.title)")) {
-
+        NavigationLink(destination: ArticleDetailView(article: article)) {
+            
             VStack(alignment: .leading, spacing: 10) {
                 
                 if let imageURL = URL(string: article.banner_image), !article.banner_image.isEmpty {

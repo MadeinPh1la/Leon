@@ -16,20 +16,20 @@ class API: APIService {
     
     // Implementation of fetchData adhering to APIService
     func fetchData<T: Decodable>(from url: URL, responseType: T.Type) -> AnyPublisher<T, Error> {
-           URLSession.shared.dataTaskPublisher(for: url)
-               .map(\.data)
-               .decode(type: T.self, decoder: JSONDecoder())
-               .mapError { $0 as Error }
-               .eraseToAnyPublisher()
-       }
-
+        URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: T.self, decoder: JSONDecoder())
+            .mapError { $0 as Error }
+            .eraseToAnyPublisher()
+    }
+    
     // Fetch stock quote using Combine
     func fetchStockQuote(forSymbol symbol: String) -> AnyPublisher<StockQuoteResponse, Error> {
-         guard let url = URL(string: "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=\(symbol)&apikey=\(apiKey)") else {
-             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
-         }
+        guard let url = URL(string: "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=\(symbol)&apikey=\(apiKey)") else {
+            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+        }
         return fetchData(from: url, responseType: StockQuoteResponse.self)
-     }
+    }
     
     // Fetch data for company overview using Combine
     func fetchCompanyOverview(forSymbol symbol: String) -> AnyPublisher<CompanyOverview, Error> {
@@ -46,7 +46,7 @@ class API: APIService {
         guard let url = URL(string: urlString) else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
-
+        
         return fetchData(from: url, responseType: CashFlowResponse.self)
     }
     
@@ -73,14 +73,26 @@ class API: APIService {
     // Fetch news
     func fetchNewsFeed(forSymbol symbol: String) -> AnyPublisher<NewsFeed, Error> {
         let urlString = "https://www.alphavantage.co/query?function=NEWS_SENTIMENT&symbol=\(symbol)&apikey=\(apiKey)"
-
+        
         guard let url = URL(string: urlString) else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
-
+        
         return URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
             .decode(type: NewsFeed.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchTrendingStocks() -> AnyPublisher<TrendingResponse, Error> {
+        guard let url = URL(string: "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=\(apiKey)&limit=2") else {
+            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: TrendingResponse.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }

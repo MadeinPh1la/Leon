@@ -192,3 +192,34 @@ struct NewsArticle: Identifiable, Decodable, Hashable {
     }
 }
 
+struct TrendingResponse: Decodable {
+    let metadata: String
+    let lastUpdated: String
+    let topGainers: [Stock]
+    let topLosers: [Stock]
+
+    
+    enum CodingKeys: String, CodingKey {
+        case metadata
+        case lastUpdated = "last_updated"
+        case topGainers = "top_gainers"
+        case topLosers = "top_losers"
+    }
+}
+
+struct Stock: Identifiable, Decodable, Hashable {
+    let id = UUID()
+    let ticker: String
+    let price: String
+    let changeAmount: String
+    let changePercentage: String
+    let volume: String
+
+    enum CodingKeys: String, CodingKey {
+        case ticker
+        case price
+        case changeAmount = "change_amount"
+        case changePercentage = "change_percentage"
+        case volume
+    }
+}
