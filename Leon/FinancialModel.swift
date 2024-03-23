@@ -99,9 +99,41 @@ public struct CashFlowData: Decodable {
     let freeCashFlow: Double?
 }
 
-public struct CashFlowResponse: Decodable {
-    var symbol: String
-    var annualReports: [AnnualCashFlowReport]
+struct CashFlowResponse: Decodable {
+    let symbol: String
+    let annualReports: [AnnualReport]
+
+    struct AnnualReport: Decodable {
+        let fiscalDateEnding: String
+        let reportedCurrency: String
+        let operatingCashflow: String
+        let paymentsForOperatingActivities: String
+        let proceedsFromOperatingActivities: String?
+        let changeInOperatingLiabilities: String
+        let changeInOperatingAssets: String
+        let depreciationDepletionAndAmortization: String
+        let capitalExpenditures: String
+        let changeInReceivables: String
+        let changeInInventory: String
+        let profitLoss: String
+        let cashflowFromInvestment: String
+        let cashflowFromFinancing: String
+        let proceedsFromRepaymentsOfShortTermDebt: String
+        let paymentsForRepurchaseOfCommonStock: String?
+        let paymentsForRepurchaseOfEquity: String?
+        let paymentsForRepurchaseOfPreferredStock: String?
+        let dividendPayout: String
+        let dividendPayoutCommonStock: String
+        let dividendPayoutPreferredStock: String?
+        let proceedsFromIssuanceOfCommonStock: String?
+        let proceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet: String
+        let proceedsFromIssuanceOfPreferredStock: String?
+        let proceedsFromRepurchaseOfEquity: String
+        let proceedsFromSaleOfTreasuryStock: String?
+        let changeInCashAndCashEquivalents: String?
+        let changeInExchangeRate: String?
+        let netIncome: String
+    }
 }
 
 public struct AnnualCashFlowReport: Decodable {
@@ -121,10 +153,40 @@ public struct AnnualCashFlowReport: Decodable {
     }
 }
 
-public struct IncomeStatementResponse: Decodable {
+struct IncomeStatementResponse: Codable {
     let symbol: String
-    let annualReports: [AnnualIncomeStatementReport]
+    let annualReports: [AnnualReport]
+
+    struct AnnualReport: Codable {
+        let fiscalDateEnding: String
+        let reportedCurrency: String
+        let grossProfit: String
+        let totalRevenue: String
+        let costOfRevenue: String
+        let costofGoodsAndServicesSold: String
+        let operatingIncome: String
+        let sellingGeneralAndAdministrative: String
+        let researchAndDevelopment: String
+        let operatingExpenses: String
+        let investmentIncomeNet: String?
+        let netInterestIncome: String
+        let interestIncome: String
+        let interestExpense: String
+        let nonInterestIncome: String
+        let otherNonOperatingIncome: String
+        let depreciation: String
+        let depreciationAndAmortization: String
+        let incomeBeforeTax: String
+        let incomeTaxExpense: String
+        let interestAndDebtExpense: String
+        let netIncomeFromContinuingOperations: String
+        let comprehensiveIncomeNetOfTax: String
+        let ebit: String
+        let ebitda: String
+        let netIncome: String
+    }
 }
+
 
 public struct BalanceSheetResponse: Codable {
     let symbol: String
@@ -153,13 +215,13 @@ public struct AnnualIncomeStatementReport: Codable {
 }
 
 public struct IncomeStatementData: Codable {
-    let symbol: String
+    let symbol: String?
     let annualReports: [AnnualIncomeStatementReport]
 }
 
 
 public struct BalanceSheetData: Codable {
-    let symbol: String
+    let symbol: String?
     let annualReports: [AnnualBalanceSheetReport]
 }
 

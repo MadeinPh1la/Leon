@@ -44,6 +44,24 @@
 		0A805D4F2BAC805F00FA9ED0 /* NewsArticleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D4E2BAC805F00FA9ED0 /* NewsArticleCard.swift */; };
 		0A805D512BACB2E000FA9ED0 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D502BACB2E000FA9ED0 /* MainTabView.swift */; };
 		0A805D532BACE51700FA9ED0 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A805D522BACE51600FA9ED0 /* ArticleDetailView.swift */; };
+		0AEEAEB12BADAF49003C2BB0 /* StockCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEEAEB02BADAF49003C2BB0 /* StockCardView.swift */; };
+		0AEEAEB32BADB019003C2BB0 /* TrendingStocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEEAEB22BADB019003C2BB0 /* TrendingStocksView.swift */; };
+		0AEEAEB52BADB268003C2BB0 /* StocksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEEAEB42BADB268003C2BB0 /* StocksListView.swift */; };
+		0AEEAEB92BADC55F003C2BB0 /* FinancialDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEEAEB82BADC55F003C2BB0 /* FinancialDetailView.swift */; };
+		0AEEAEBB2BAF12E5003C2BB0 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEEAEBA2BAF12E5003C2BB0 /* Theme.swift */; };
+		0AEEAEBD2BAF1559003C2BB0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEEAEBC2BAF1559003C2BB0 /* CardView.swift */; };
+		0AEEAEE62BAF2194003C2BB0 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAED82BAF2194003C2BB0 /* Inter-Black.ttf */; };
+		0AEEAEE72BAF2194003C2BB0 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAED92BAF2194003C2BB0 /* Inter-Bold.ttf */; };
+		0AEEAEE82BAF2194003C2BB0 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAEDA2BAF2194003C2BB0 /* Inter-ExtraBold.ttf */; };
+		0AEEAEE92BAF2194003C2BB0 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAEDB2BAF2194003C2BB0 /* Inter-ExtraLight.ttf */; };
+		0AEEAEEA2BAF2194003C2BB0 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAEDC2BAF2194003C2BB0 /* Inter-Light.ttf */; };
+		0AEEAEEB2BAF2194003C2BB0 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAEDD2BAF2194003C2BB0 /* Inter-Medium.ttf */; };
+		0AEEAEEC2BAF2194003C2BB0 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAEDE2BAF2194003C2BB0 /* Inter-Regular.ttf */; };
+		0AEEAEED2BAF2194003C2BB0 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAEDF2BAF2194003C2BB0 /* Inter-SemiBold.ttf */; };
+		0AEEAEEE2BAF2194003C2BB0 /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAEE02BAF2194003C2BB0 /* Inter-Thin.ttf */; };
+		0AEEAEEF2BAF2194003C2BB0 /* Inter-VariableFont_slnt,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAEE22BAF2194003C2BB0 /* Inter-VariableFont_slnt,wght.ttf */; };
+		0AEEAEF02BAF2194003C2BB0 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAEE32BAF2194003C2BB0 /* OFL.txt */; };
+		0AEEAEF12BAF2194003C2BB0 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0AEEAEE42BAF2194003C2BB0 /* README.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +122,24 @@
 		0A805D4E2BAC805F00FA9ED0 /* NewsArticleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticleCard.swift; sourceTree = "<group>"; };
 		0A805D502BACB2E000FA9ED0 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		0A805D522BACE51600FA9ED0 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
+		0AEEAEB02BADAF49003C2BB0 /* StockCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCardView.swift; sourceTree = "<group>"; };
+		0AEEAEB22BADB019003C2BB0 /* TrendingStocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingStocksView.swift; sourceTree = "<group>"; };
+		0AEEAEB42BADB268003C2BB0 /* StocksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksListView.swift; sourceTree = "<group>"; };
+		0AEEAEB82BADC55F003C2BB0 /* FinancialDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialDetailView.swift; sourceTree = "<group>"; };
+		0AEEAEBA2BAF12E5003C2BB0 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		0AEEAEBC2BAF1559003C2BB0 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		0AEEAED82BAF2194003C2BB0 /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.ttf"; sourceTree = "<group>"; };
+		0AEEAED92BAF2194003C2BB0 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		0AEEAEDA2BAF2194003C2BB0 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		0AEEAEDB2BAF2194003C2BB0 /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		0AEEAEDC2BAF2194003C2BB0 /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
+		0AEEAEDD2BAF2194003C2BB0 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		0AEEAEDE2BAF2194003C2BB0 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		0AEEAEDF2BAF2194003C2BB0 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		0AEEAEE02BAF2194003C2BB0 /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.ttf"; sourceTree = "<group>"; };
+		0AEEAEE22BAF2194003C2BB0 /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; };
+		0AEEAEE32BAF2194003C2BB0 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		0AEEAEE42BAF2194003C2BB0 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +199,7 @@
 				0A805D402BA6632000FA9ED0 /* APIService.swift */,
 				0A4DCB4E2B94FF73002F23D8 /* URLSessionProtocol.swift */,
 				0A54539E2B5A80FB000BB273 /* FinancialViewModel.swift */,
+				0AEEAEB42BADB268003C2BB0 /* StocksListView.swift */,
 				0A71D4242B82A046004EBDA9 /* FinancialDataService.swift */,
 				0A54536C2B5937F4000BB273 /* LeonApp.swift */,
 				0A54539A2B594D71000BB273 /* FinancialModel.swift */,
@@ -172,7 +209,13 @@
 				0A71D4282B82AF5F004EBDA9 /* DCFData.swift */,
 				0A4DCB5C2B9A3260002F23D8 /* DCFModel.swift */,
 				0A54536E2B5937F4000BB273 /* ContentView.swift */,
+				0AEEAEBA2BAF12E5003C2BB0 /* Theme.swift */,
+				0AEEAEE52BAF2194003C2BB0 /* Inter */,
+				0AEEAEBC2BAF1559003C2BB0 /* CardView.swift */,
 				0A4DCB542B95DF53002F23D8 /* MainAppView.swift */,
+				0AEEAEB02BADAF49003C2BB0 /* StockCardView.swift */,
+				0AEEAEB82BADC55F003C2BB0 /* FinancialDetailView.swift */,
+				0AEEAEB22BADB019003C2BB0 /* TrendingStocksView.swift */,
 				0A805D4C2BAB73E400FA9ED0 /* NewsFeedView.swift */,
 				0A805D4E2BAC805F00FA9ED0 /* NewsArticleCard.swift */,
 				0A805D522BACE51600FA9ED0 /* ArticleDetailView.swift */,
@@ -226,6 +269,33 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0AEEAEE12BAF2194003C2BB0 /* static */ = {
+			isa = PBXGroup;
+			children = (
+				0AEEAED82BAF2194003C2BB0 /* Inter-Black.ttf */,
+				0AEEAED92BAF2194003C2BB0 /* Inter-Bold.ttf */,
+				0AEEAEDA2BAF2194003C2BB0 /* Inter-ExtraBold.ttf */,
+				0AEEAEDB2BAF2194003C2BB0 /* Inter-ExtraLight.ttf */,
+				0AEEAEDC2BAF2194003C2BB0 /* Inter-Light.ttf */,
+				0AEEAEDD2BAF2194003C2BB0 /* Inter-Medium.ttf */,
+				0AEEAEDE2BAF2194003C2BB0 /* Inter-Regular.ttf */,
+				0AEEAEDF2BAF2194003C2BB0 /* Inter-SemiBold.ttf */,
+				0AEEAEE02BAF2194003C2BB0 /* Inter-Thin.ttf */,
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
+		0AEEAEE52BAF2194003C2BB0 /* Inter */ = {
+			isa = PBXGroup;
+			children = (
+				0AEEAEE12BAF2194003C2BB0 /* static */,
+				0AEEAEE22BAF2194003C2BB0 /* Inter-VariableFont_slnt,wght.ttf */,
+				0AEEAEE32BAF2194003C2BB0 /* OFL.txt */,
+				0AEEAEE42BAF2194003C2BB0 /* README.txt */,
+			);
+			path = Inter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,9 +414,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEEAEE72BAF2194003C2BB0 /* Inter-Bold.ttf in Resources */,
 				0A5453762B5937F7000BB273 /* Preview Assets.xcassets in Resources */,
 				0A5453732B5937F7000BB273 /* Assets.xcassets in Resources */,
+				0AEEAEF02BAF2194003C2BB0 /* OFL.txt in Resources */,
+				0AEEAEEC2BAF2194003C2BB0 /* Inter-Regular.ttf in Resources */,
+				0AEEAEF12BAF2194003C2BB0 /* README.txt in Resources */,
+				0AEEAEE62BAF2194003C2BB0 /* Inter-Black.ttf in Resources */,
+				0AEEAEEA2BAF2194003C2BB0 /* Inter-Light.ttf in Resources */,
+				0AEEAEEB2BAF2194003C2BB0 /* Inter-Medium.ttf in Resources */,
 				0A71D41B2B8264B2004EBDA9 /* GoogleService-Info.plist in Resources */,
+				0AEEAEE82BAF2194003C2BB0 /* Inter-ExtraBold.ttf in Resources */,
+				0AEEAEE92BAF2194003C2BB0 /* Inter-ExtraLight.ttf in Resources */,
+				0AEEAEEF2BAF2194003C2BB0 /* Inter-VariableFont_slnt,wght.ttf in Resources */,
+				0AEEAEED2BAF2194003C2BB0 /* Inter-SemiBold.ttf in Resources */,
+				0AEEAEEE2BAF2194003C2BB0 /* Inter-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AEEAEBB2BAF12E5003C2BB0 /* Theme.swift in Sources */,
 				0A4DCB4F2B94FF73002F23D8 /* URLSessionProtocol.swift in Sources */,
 				0A4DCB552B95DF53002F23D8 /* MainAppView.swift in Sources */,
 				0A54536F2B5937F4000BB273 /* ContentView.swift in Sources */,
@@ -378,12 +461,16 @@
 				0A54539B2B594D71000BB273 /* FinancialModel.swift in Sources */,
 				0A805D392BA29DE000FA9ED0 /* FirebaseAuthService.swift in Sources */,
 				0A71D4252B82A046004EBDA9 /* FinancialDataService.swift in Sources */,
+				0AEEAEB92BADC55F003C2BB0 /* FinancialDetailView.swift in Sources */,
 				0A71D41F2B82850A004EBDA9 /* QuoteCard.swift in Sources */,
+				0AEEAEB32BADB019003C2BB0 /* TrendingStocksView.swift in Sources */,
 				0A54539F2B5A80FB000BB273 /* FinancialViewModel.swift in Sources */,
 				0A805D4D2BAB73E400FA9ED0 /* NewsFeedView.swift in Sources */,
 				0A4DCB5D2B9A3260002F23D8 /* DCFModel.swift in Sources */,
+				0AEEAEBD2BAF1559003C2BB0 /* CardView.swift in Sources */,
 				0A805D512BACB2E000FA9ED0 /* MainTabView.swift in Sources */,
 				0A5453712B5937F4000BB273 /* Item.swift in Sources */,
+				0AEEAEB12BADAF49003C2BB0 /* StockCardView.swift in Sources */,
 				0A71D4292B82AF5F004EBDA9 /* DCFData.swift in Sources */,
 				0A71D4272B82A0E9004EBDA9 /* AuthViewModel.swift in Sources */,
 				0A54536D2B5937F4000BB273 /* LeonApp.swift in Sources */,
@@ -393,6 +480,7 @@
 				0A805D412BA6632000FA9ED0 /* APIService.swift in Sources */,
 				0A805D532BACE51700FA9ED0 /* ArticleDetailView.swift in Sources */,
 				0A4DCB5B2B96811C002F23D8 /* DCFCard.swift in Sources */,
+				0AEEAEB52BADB268003C2BB0 /* StocksListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

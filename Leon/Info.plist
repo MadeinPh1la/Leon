@@ -6,5 +6,17 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string></string>
+	</array>
+	<key>Inter-Regular.ttf</key>
+	<string></string>
+	<key>Inter-Bold.ttf</key>
+	<string></string>
+	<key>Inter-Light.ttf</key>
+	<string></string>
+	<key>Inter-Medium.ttf</key>
+	<string></string>
 </dict>
 </plist>

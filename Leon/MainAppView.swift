@@ -11,6 +11,8 @@ struct MainAppView: View {
     @State private var symbol: String = ""
     @ObservedObject var financialViewModel: FinancialViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
+    @State private var isShowingFinancialDetails = false
+
     
     init(financialViewModel: FinancialViewModel) {
         self.financialViewModel = financialViewModel
@@ -23,30 +25,10 @@ struct MainAppView: View {
                 
                 fetchButton
                 
-                // Trending section
-                if !financialViewModel.topGainers.isEmpty {
-                                Text("Top Gainers").font(.headline).padding(.top)
-                                ForEach(financialViewModel.topGainers) { stock in
-                                    VStack(alignment: .leading) {
-                                        Text(stock.ticker).fontWeight(.bold)
-                                        Text("Price: \(stock.price)")
-                                        Text("Change: \(stock.changeAmount) (\(stock.changePercentage)%)")
-                                    }
-                                    .padding(.vertical, 2)
-                                }
-                            }
-                            
-                            if !financialViewModel.topLosers.isEmpty {
-                                Text("Top Losers").font(.headline).padding(.top)
-                                ForEach(financialViewModel.topLosers) { stock in
-                                    VStack(alignment: .leading) {
-                                        Text(stock.ticker).fontWeight(.bold)
-                                        Text("Price: \(stock.price)")
-                                        Text("Change: \(stock.changeAmount) (\(stock.changePercentage)%)")
-                                    }
-                                    .padding(.vertical, 2)
-                                }
-                            }
+                // Programmatically trigger navigation to FinancialDetailView
+                NavigationLink(destination: FinancialDetailView(financialViewModel: financialViewModel), isActive: $isShowingFinancialDetails) {
+                        EmptyView() // This view is invisible and serves only as a navigation trigger
+                    }
                 
                 dataDisplayScrollView
             }
@@ -57,11 +39,13 @@ struct MainAppView: View {
             }
             
             .onAppear {
-                 financialViewModel.loadTrendingStocks()
-             }
-        }
+                
+                financialViewModel.loadTrendingStocks()
+            }
             
         }
+        
+    }
     
     // Subviews
     private var symbolEntryField: some View {
@@ -71,47 +55,46 @@ struct MainAppView: View {
     }
     
     private var fetchButton: some View {
-        Button("Get Quote", action: fetchFinancialData)
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
+        Button("Get Quote") {
+            financialViewModel.symbol = self.symbol // Update the ViewModel's symbol
+            financialViewModel.fetchFinancialData(forSymbol: financialViewModel.symbol)
+            isShowingFinancialDetails = true
+        }
+        .foregroundColor(.white) // Set text color to white
+        .padding() // Add padding around the text
+        .background(.mint) // Set background color to blue
+        .cornerRadius(10) // Apply corner radius
+        .shadow(radius: 5) // Add shadow
     }
     
     private var dataDisplayScrollView: some View {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: 10) {
                 
-                if let quote = financialViewModel.quote {
-                    QuoteCard(quote: quote)
+                
+                // Trending section
+                TrendingStocksView(title: "Top Gainers", stocks: Array(financialViewModel.topGainers.prefix(2)))
+                
+                
+                NavigationLink(destination: StocksListView(title: "Top Gainers", stocks: financialViewModel.topGainers)) {
+                    Text("View All Top Gainers")
+                        .foregroundColor(.blue)
                 }
+                TrendingStocksView(title: "Top Losers", stocks: Array(financialViewModel.topLosers.prefix(2)))
                 
-                if let overview = financialViewModel.companyOverview {
-                    CompanyOverviewCard(overview: overview)
-                }
-                
-                // Displaying the DCF Share Price
-                if let sharePrice = financialViewModel.sharePrice {
-                    Text("DCF Share Price: \(sharePrice, specifier: "%.2f")")
+                NavigationLink(destination: StocksListView(title: "Top Losers", stocks: financialViewModel.topLosers)) {
+                    Text("View All Top Losers")
+                        .foregroundColor(.blue)
                 }
                 
             }
         }
     }
-
     
     private var signOutToolbarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button("Sign Out", action: authViewModel.signOut)
         }
-    }
-
-    // Actions
-    func fetchFinancialData() {
-        financialViewModel.fetchStockQuote(forSymbol: symbol.uppercased())
-        financialViewModel.fetchCompanyOverview(forSymbol: symbol.uppercased())
-        financialViewModel.loadDCFValue(forSymbol: symbol.uppercased())
-        financialViewModel.loadNewsFeed(forSymbol: symbol.uppercased())
     }
 }
 
@@ -197,7 +180,7 @@ struct MainAppView: View {
 //    }
 //}
 //
-////Actions
+//Actions
 //private extension MainAppView {
 //    func fetchFinancialData() {
 //        financialViewModel.fetchStockQuote(forSymbol: symbol.uppercased())
