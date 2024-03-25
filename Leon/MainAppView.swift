@@ -42,6 +42,8 @@ struct MainAppView: View {
                 
                 financialViewModel.loadTrendingStocks()
             }
+            .background()
+
             
         }
         
